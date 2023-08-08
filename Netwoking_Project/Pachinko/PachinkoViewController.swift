@@ -17,25 +17,43 @@ class PachinkoViewController: UIViewController {
     
     @IBOutlet var lottoNumbers: [UILabel]!
     
+    @IBOutlet var gameStartBtn: UIButton!
+    
     @IBOutlet var countLotto: UILabel!
     
     // 해당 회차 로또 담기
     var createdLottoNumber: [Int] = []
     
     // 로또 횟차 생성
-    let creatLottoCount = Array(Array(0...1010).reversed())
+    let creatLottoCount = Array(Array(0...1000).reversed())
     
     @IBOutlet var praticeLabel: UILabel!
     
     @IBOutlet var lottoTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingInitial()
+        settingTextField()
+      
+        settingNumber()
+    }
+    
+    func settingInitial() {
         self.praticeLabel.text = "연습게임"
+        countLotto.text = "해당 회차 로또 번호"
+        gameStartBtn.addTarget(self, action: #selector(gameStartBtnClicked(_:)), for: .touchUpInside)
         picker.dataSource = self
         picker.delegate = self
-        settingTextField()
-        countLotto.text = "해당 회차 로또 번호"
-        settingNumber()
+    }
+    
+    @objc func gameStartBtnClicked(_ sender: UIButton) {
+        
+        print(#fileID, #function, #line,"- <#comment#>" )
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let vc = sb.instantiateViewController(withIdentifier: GameViewController.identifier) as? GameViewController else { return }
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func settingNumber() {
