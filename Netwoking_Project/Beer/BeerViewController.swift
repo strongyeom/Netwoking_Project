@@ -47,10 +47,9 @@ class BeerViewController: UIViewController {
     func settingCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let spacing: CGFloat = 5
+        let spacing: CGFloat = 10
         let width = UIScreen.main.bounds.width
         let height = collectionBg.frame.height // height: 300
-        print("height 계산 기존 \(height) 결과값 : \((height - (spacing * 4)) / 3)")
         layout.itemSize = CGSize(width: width, height: (height - (spacing * 4)) / 3)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
@@ -97,6 +96,10 @@ extension BeerViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension BeerViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "테이블 뷰"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("tableView - numberOfRowsInSection")
         return beerList.count
@@ -110,18 +113,23 @@ extension BeerViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("TableViewCell 선택 :\(beerList[indexPath.row].title)")
+    }
 }
 
 
 // MARK: - UICollectionViewDelegate
 extension BeerViewController: UICollectionViewDelegate {
-
+    
 }
 
 
 // MARK: - UICollectionViewDataSource
 extension BeerViewController: UICollectionViewDataSource {
 
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("collectionView - numberOfItemsInSection")
         return beerList.count
@@ -136,5 +144,8 @@ extension BeerViewController: UICollectionViewDataSource {
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("collectionViewCell 선택 :\(beerList[indexPath.row].title)")
+    }
 }
 

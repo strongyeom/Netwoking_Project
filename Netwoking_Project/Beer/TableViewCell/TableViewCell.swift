@@ -20,7 +20,7 @@ class TableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.beerDescription.settingDescrition()
     }
   
     func configure(row: Beer) {
@@ -47,7 +47,7 @@ class TableViewCell: UITableViewCell {
             result in
             switch result {
             case .success(let value):
-                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                print("Kingfisher 성공")
             case .failure(let error):
                 print("Job failed: \(error.localizedDescription)")
             }

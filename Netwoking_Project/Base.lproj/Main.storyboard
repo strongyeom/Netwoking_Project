@@ -325,6 +325,9 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gu3-Dv-1nO">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="bS5-Ha-MHY"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kTI-XS-vqt">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -347,8 +350,7 @@
                                 <constraints>
                                     <constraint firstItem="Gu3-Dv-1nO" firstAttribute="leading" secondItem="c1O-Ml-mn5" secondAttribute="leading" id="AgE-qz-WLX"/>
                                     <constraint firstAttribute="bottom" secondItem="Gu3-Dv-1nO" secondAttribute="bottom" id="KZf-9W-Q3c"/>
-                                    <constraint firstAttribute="height" constant="300" id="ZkS-PW-B9n"/>
-                                    <constraint firstItem="Gu3-Dv-1nO" firstAttribute="top" secondItem="c1O-Ml-mn5" secondAttribute="top" id="euc-jf-azN"/>
+                                    <constraint firstItem="Gu3-Dv-1nO" firstAttribute="top" secondItem="c1O-Ml-mn5" secondAttribute="top" id="kfY-D5-bfc"/>
                                     <constraint firstAttribute="trailing" secondItem="Gu3-Dv-1nO" secondAttribute="trailing" id="wwH-Pv-HVa"/>
                                 </constraints>
                             </view>

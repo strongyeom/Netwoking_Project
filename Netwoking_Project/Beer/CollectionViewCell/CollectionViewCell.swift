@@ -16,9 +16,10 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet var headerCollTitle: UILabel!
     
     @IBOutlet var headerCollDesc: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.headerCollDesc.settingDescrition()
     }
     
     func settingKingfisher(urlString: String) {
