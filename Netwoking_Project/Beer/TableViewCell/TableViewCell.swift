@@ -43,15 +43,6 @@ class TableViewCell: UITableViewCell {
                 .transition(.fade(1)),
                 .cacheOriginalImage
             ])
-        {
-            result in
-            switch result {
-            case .success(let value):
-                print("Kingfisher 성공")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-            }
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

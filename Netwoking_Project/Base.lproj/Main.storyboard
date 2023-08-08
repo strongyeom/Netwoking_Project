@@ -484,6 +484,7 @@
                     <connections>
                         <segue destination="5PQ-Fy-RrT" kind="relationship" relationship="viewControllers" id="JhN-xQ-jfo"/>
                         <segue destination="25V-IG-xrF" kind="relationship" relationship="viewControllers" id="NF2-M9-Da1"/>
+                        <segue destination="VVt-gM-Fxt" kind="relationship" relationship="viewControllers" id="mrp-Io-zs4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfa-yq-3d8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -508,6 +509,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gh1-Sf-f3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1232.824427480916" y="-2.1126760563380285"/>
+        </scene>
+        <!--KakoBookVC-->
+        <scene sceneID="aZx-7T-p8U">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="KakoBookVC" storyboardName="KakoBookVC" id="VVt-gM-Fxt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="DuL-iP-YoK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2n-k0-MKi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1599" y="1273"/>
         </scene>
         <!--새싹비어-->
         <scene sceneID="RN0-tO-ogX">

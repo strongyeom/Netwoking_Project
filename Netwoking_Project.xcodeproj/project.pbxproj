@@ -28,6 +28,13 @@
 		26E5EA602A823E9800CCDF90 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA5F2A823E9800CCDF90 /* Beer.swift */; };
 		26E5EA662A825D4F00CCDF90 /* Ext+DescriptionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA652A825D4F00CCDF90 /* Ext+DescriptionText.swift */; };
 		26E5EA6A2A8291C600CCDF90 /* ClickCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA692A8291C600CCDF90 /* ClickCellStatus.swift */; };
+		26E5EA6D2A8296DA00CCDF90 /* KakoBookVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA6C2A8296DA00CCDF90 /* KakoBookVC.storyboard */; };
+		26E5EA6F2A8296EF00CCDF90 /* KakoBookVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA6E2A8296EF00CCDF90 /* KakoBookVCViewController.swift */; };
+		26E5EA752A82987900CCDF90 /* KakoBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA742A82987900CCDF90 /* KakoBook.swift */; };
+		26E5EA772A829A6B00CCDF90 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA762A829A6B00CCDF90 /* .gitignore */; };
+		26E5EA792A829A8D00CCDF90 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA782A829A8D00CCDF90 /* APIKey.swift */; };
+		26E5EA802A829F6900CCDF90 /* KakaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */; };
+		26E5EA812A829F6900CCDF90 /* KakaoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +58,13 @@
 		26E5EA5F2A823E9800CCDF90 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		26E5EA652A825D4F00CCDF90 /* Ext+DescriptionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DescriptionText.swift"; sourceTree = "<group>"; };
 		26E5EA692A8291C600CCDF90 /* ClickCellStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickCellStatus.swift; sourceTree = "<group>"; };
+		26E5EA6C2A8296DA00CCDF90 /* KakoBookVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KakoBookVC.storyboard; sourceTree = "<group>"; };
+		26E5EA6E2A8296EF00CCDF90 /* KakoBookVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakoBookVCViewController.swift; sourceTree = "<group>"; };
+		26E5EA742A82987900CCDF90 /* KakoBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakoBook.swift; sourceTree = "<group>"; };
+		26E5EA762A829A6B00CCDF90 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		26E5EA782A829A8D00CCDF90 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCollectionViewCell.swift; sourceTree = "<group>"; };
+		26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KakaoCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,15 +100,18 @@
 		26E5EA282A81FB0800CCDF90 /* Netwoking_Project */ = {
 			isa = PBXGroup;
 			children = (
-				26E5EA522A82376C00CCDF90 /* Beer */,
 				26E5EA4F2A82288B00CCDF90 /* Ext */,
 				26E5EA4E2A82216E00CCDF90 /* Pachinko */,
+				26E5EA522A82376C00CCDF90 /* Beer */,
+				26E5EA6B2A8296AC00CCDF90 /* KakaoBookSearch */,
 				26E5EA292A81FB0800CCDF90 /* AppDelegate.swift */,
 				26E5EA2B2A81FB0800CCDF90 /* SceneDelegate.swift */,
 				26E5EA2F2A81FB0800CCDF90 /* Main.storyboard */,
 				26E5EA322A81FB0A00CCDF90 /* Assets.xcassets */,
 				26E5EA342A81FB0A00CCDF90 /* LaunchScreen.storyboard */,
 				26E5EA372A81FB0A00CCDF90 /* Info.plist */,
+				26E5EA762A829A6B00CCDF90 /* .gitignore */,
+				26E5EA782A829A8D00CCDF90 /* APIKey.swift */,
 			);
 			path = Netwoking_Project;
 			sourceTree = "<group>";
@@ -165,6 +182,18 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		26E5EA6B2A8296AC00CCDF90 /* KakaoBookSearch */ = {
+			isa = PBXGroup;
+			children = (
+				26E5EA6C2A8296DA00CCDF90 /* KakoBookVC.storyboard */,
+				26E5EA6E2A8296EF00CCDF90 /* KakoBookVCViewController.swift */,
+				26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */,
+				26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */,
+				26E5EA742A82987900CCDF90 /* KakoBook.swift */,
+			);
+			path = KakaoBookSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,8 +262,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E5EA772A829A6B00CCDF90 /* .gitignore in Resources */,
 				26E5EA362A81FB0A00CCDF90 /* LaunchScreen.storyboard in Resources */,
+				26E5EA812A829F6900CCDF90 /* KakaoCollectionViewCell.xib in Resources */,
 				26E5EA5E2A823D4800CCDF90 /* TableViewCell.xib in Resources */,
+				26E5EA6D2A8296DA00CCDF90 /* KakoBookVC.storyboard in Resources */,
 				26E5EA332A81FB0A00CCDF90 /* Assets.xcassets in Resources */,
 				26E5EA5A2A823AE400CCDF90 /* CollectionViewCell.xib in Resources */,
 				26E5EA312A81FB0800CCDF90 /* Main.storyboard in Resources */,
@@ -249,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26E5EA542A82396400CCDF90 /* BeerViewController.swift in Sources */,
+				26E5EA802A829F6900CCDF90 /* KakaoCollectionViewCell.swift in Sources */,
 				26E5EA662A825D4F00CCDF90 /* Ext+DescriptionText.swift in Sources */,
 				26E5EA512A8228A500CCDF90 /* Ext+ADLabel.swift in Sources */,
 				26E5EA592A823AE400CCDF90 /* CollectionViewCell.swift in Sources */,
@@ -258,9 +291,12 @@
 				26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */,
 				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
+				26E5EA752A82987900CCDF90 /* KakoBook.swift in Sources */,
 				26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */,
 				26E5EA4D2A82216900CCDF90 /* GameViewController.swift in Sources */,
+				26E5EA6F2A8296EF00CCDF90 /* KakoBookVCViewController.swift in Sources */,
 				26E5EA3E2A81FF1B00CCDF90 /* PachinkoViewController.swift in Sources */,
+				26E5EA792A829A8D00CCDF90 /* APIKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
