@@ -15,6 +15,9 @@
 		26E5EA3E2A81FF1B00CCDF90 /* PachinkoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA3D2A81FF1B00CCDF90 /* PachinkoViewController.swift */; };
 		26E5EA412A81FFCC00CCDF90 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5EA402A81FFCC00CCDF90 /* SwiftyJSON */; };
 		26E5EA442A81FFD600CCDF90 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5EA432A81FFD600CCDF90 /* Alamofire */; };
+		26E5EA462A8210AB00CCDF90 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA452A8210AB00CCDF90 /* BeerViewController.swift */; };
+		26E5EA492A8213C900CCDF90 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5EA482A8213C900CCDF90 /* Kingfisher */; };
+		26E5EA4B2A821CA600CCDF90 /* Ext+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA4A2A821CA600CCDF90 /* Ext+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,8 @@
 		26E5EA352A81FB0A00CCDF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26E5EA372A81FB0A00CCDF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26E5EA3D2A81FF1B00CCDF90 /* PachinkoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PachinkoViewController.swift; sourceTree = "<group>"; };
+		26E5EA452A8210AB00CCDF90 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
+		26E5EA4A2A821CA600CCDF90 /* Ext+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E5EA492A8213C900CCDF90 /* Kingfisher in Frameworks */,
 				26E5EA412A81FFCC00CCDF90 /* SwiftyJSON in Frameworks */,
 				26E5EA442A81FFD600CCDF90 /* Alamofire in Frameworks */,
 			);
@@ -63,10 +69,12 @@
 				26E5EA292A81FB0800CCDF90 /* AppDelegate.swift */,
 				26E5EA2B2A81FB0800CCDF90 /* SceneDelegate.swift */,
 				26E5EA3D2A81FF1B00CCDF90 /* PachinkoViewController.swift */,
+				26E5EA452A8210AB00CCDF90 /* BeerViewController.swift */,
 				26E5EA2F2A81FB0800CCDF90 /* Main.storyboard */,
 				26E5EA322A81FB0A00CCDF90 /* Assets.xcassets */,
 				26E5EA342A81FB0A00CCDF90 /* LaunchScreen.storyboard */,
 				26E5EA372A81FB0A00CCDF90 /* Info.plist */,
+				26E5EA4A2A821CA600CCDF90 /* Ext+UIView.swift */,
 			);
 			path = Netwoking_Project;
 			sourceTree = "<group>";
@@ -90,6 +98,7 @@
 			packageProductDependencies = (
 				26E5EA402A81FFCC00CCDF90 /* SwiftyJSON */,
 				26E5EA432A81FFD600CCDF90 /* Alamofire */,
+				26E5EA482A8213C900CCDF90 /* Kingfisher */,
 			);
 			productName = Netwoking_Project;
 			productReference = 26E5EA262A81FB0800CCDF90 /* Netwoking_Project.app */;
@@ -122,6 +131,7 @@
 			packageReferences = (
 				26E5EA3F2A81FFCC00CCDF90 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				26E5EA422A81FFD600CCDF90 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				26E5EA472A8213C900CCDF90 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 26E5EA272A81FB0800CCDF90 /* Products */;
 			projectDirPath = "";
@@ -150,6 +160,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E5EA4B2A821CA600CCDF90 /* Ext+UIView.swift in Sources */,
+				26E5EA462A8210AB00CCDF90 /* BeerViewController.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
 				26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */,
 				26E5EA3E2A81FF1B00CCDF90 /* PachinkoViewController.swift in Sources */,
@@ -386,6 +398,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		26E5EA472A8213C900CCDF90 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -398,6 +418,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26E5EA422A81FFD600CCDF90 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		26E5EA482A8213C900CCDF90 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26E5EA472A8213C900CCDF90 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
