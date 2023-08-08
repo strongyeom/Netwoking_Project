@@ -8,7 +8,6 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import Kingfisher
 
 class BeerViewController: UIViewController {
     
@@ -30,7 +29,6 @@ class BeerViewController: UIViewController {
        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .red
         tableView.rowHeight = 100
         let nib = UINib(nibName: TableViewCell.identifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: TableViewCell.identifier)
@@ -40,7 +38,6 @@ class BeerViewController: UIViewController {
     func settingCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-
         let nib = UINib(nibName: CollectionViewCell.identifier, bundle: nil)
         
         collectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.identifier)
@@ -52,10 +49,9 @@ class BeerViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let spacing: CGFloat = 5
         let width = UIScreen.main.bounds.width
-        collectionView.automaticallyAdjustsScrollIndicatorInsets = false
-        let height = collectionBg.frame.height// height: 300
-        print("height 계산 기존 \(height) 결과값 : \((height - (spacing * 3)) / 3)")
-        layout.itemSize = CGSize(width: width, height: 90)
+        let height = collectionBg.frame.height // height: 300
+        print("height 계산 기존 \(height) 결과값 : \((height - (spacing * 4)) / 3)")
+        layout.itemSize = CGSize(width: width, height: (height - (spacing * 4)) / 3)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: 0)
@@ -63,6 +59,7 @@ class BeerViewController: UIViewController {
         
     }
     
+    // 네트워크 통신
     func callRequest() {
         
         let url = "https://api.punkapi.com/v2/beers"
@@ -89,10 +86,15 @@ class BeerViewController: UIViewController {
     }
   
 }
+
+
+// MARK: - UITableViewDelegate
 extension BeerViewController: UITableViewDelegate {
     
 }
 
+
+// MARK: - UITableViewDataSource
 extension BeerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,22 +106,20 @@ extension BeerViewController: UITableViewDataSource {
         print("tableView - cellForRowAt")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell() }
         let row = beerList[indexPath.row]
-        cell.beerTitle.text = row.title
-        cell.beerDescription.text = row.description
-        cell.beerImage.backgroundColor = .red
+        cell.configure(row: row)
+        
         return cell
-        
-        
     }
-    
-    
-  
 }
 
+
+// MARK: - UICollectionViewDelegate
 extension BeerViewController: UICollectionViewDelegate {
 
 }
 
+
+// MARK: - UICollectionViewDataSource
 extension BeerViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,10 +131,7 @@ extension BeerViewController: UICollectionViewDataSource {
         print("collectionView - cellForItemAt")
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         let item = beerList[indexPath.item]
-        cell.headerCollImage.backgroundColor = .yellow
-        cell.headerCollTitle.text = item.title
-        cell.headerCollDesc.text = item.description
-        cell.backgroundColor = .green
+        cell.configure(item: item)
 
         return cell
     }
