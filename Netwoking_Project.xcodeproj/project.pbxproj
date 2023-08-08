@@ -15,11 +15,19 @@
 		26E5EA3E2A81FF1B00CCDF90 /* PachinkoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA3D2A81FF1B00CCDF90 /* PachinkoViewController.swift */; };
 		26E5EA412A81FFCC00CCDF90 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5EA402A81FFCC00CCDF90 /* SwiftyJSON */; };
 		26E5EA442A81FFD600CCDF90 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5EA432A81FFD600CCDF90 /* Alamofire */; };
-		26E5EA462A8210AB00CCDF90 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA452A8210AB00CCDF90 /* BeerViewController.swift */; };
+		26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA452A8210AB00CCDF90 /* BeerDetailViewController.swift */; };
 		26E5EA492A8213C900CCDF90 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5EA482A8213C900CCDF90 /* Kingfisher */; };
 		26E5EA4B2A821CA600CCDF90 /* Ext+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA4A2A821CA600CCDF90 /* Ext+UIView.swift */; };
 		26E5EA4D2A82216900CCDF90 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA4C2A82216900CCDF90 /* GameViewController.swift */; };
 		26E5EA512A8228A500CCDF90 /* Ext+ADLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA502A8228A500CCDF90 /* Ext+ADLabel.swift */; };
+		26E5EA542A82396400CCDF90 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA532A82396400CCDF90 /* BeerViewController.swift */; };
+		26E5EA592A823AE400CCDF90 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA572A823AE400CCDF90 /* CollectionViewCell.swift */; };
+		26E5EA5A2A823AE400CCDF90 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA582A823AE400CCDF90 /* CollectionViewCell.xib */; };
+		26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA5B2A823D4800CCDF90 /* TableViewCell.swift */; };
+		26E5EA5E2A823D4800CCDF90 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA5C2A823D4800CCDF90 /* TableViewCell.xib */; };
+		26E5EA602A823E9800CCDF90 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA5F2A823E9800CCDF90 /* Beer.swift */; };
+		26E5EA632A82512500CCDF90 /* eeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA612A82512500CCDF90 /* eeCollectionViewCell.swift */; };
+		26E5EA642A82512500CCDF90 /* eeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA622A82512500CCDF90 /* eeCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +39,18 @@
 		26E5EA352A81FB0A00CCDF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26E5EA372A81FB0A00CCDF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26E5EA3D2A81FF1B00CCDF90 /* PachinkoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PachinkoViewController.swift; sourceTree = "<group>"; };
-		26E5EA452A8210AB00CCDF90 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
+		26E5EA452A8210AB00CCDF90 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 		26E5EA4A2A821CA600CCDF90 /* Ext+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIView.swift"; sourceTree = "<group>"; };
 		26E5EA4C2A82216900CCDF90 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		26E5EA502A8228A500CCDF90 /* Ext+ADLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+ADLabel.swift"; sourceTree = "<group>"; };
+		26E5EA532A82396400CCDF90 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
+		26E5EA572A823AE400CCDF90 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		26E5EA582A823AE400CCDF90 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		26E5EA5B2A823D4800CCDF90 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		26E5EA5C2A823D4800CCDF90 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		26E5EA5F2A823E9800CCDF90 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		26E5EA612A82512500CCDF90 /* eeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eeCollectionViewCell.swift; sourceTree = "<group>"; };
+		26E5EA622A82512500CCDF90 /* eeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = eeCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +86,11 @@
 		26E5EA282A81FB0800CCDF90 /* Netwoking_Project */ = {
 			isa = PBXGroup;
 			children = (
+				26E5EA522A82376C00CCDF90 /* Beer */,
 				26E5EA4F2A82288B00CCDF90 /* Ext */,
 				26E5EA4E2A82216E00CCDF90 /* Pachinko */,
 				26E5EA292A81FB0800CCDF90 /* AppDelegate.swift */,
 				26E5EA2B2A81FB0800CCDF90 /* SceneDelegate.swift */,
-				26E5EA452A8210AB00CCDF90 /* BeerViewController.swift */,
 				26E5EA2F2A81FB0800CCDF90 /* Main.storyboard */,
 				26E5EA322A81FB0A00CCDF90 /* Assets.xcassets */,
 				26E5EA342A81FB0A00CCDF90 /* LaunchScreen.storyboard */,
@@ -99,6 +115,38 @@
 				26E5EA502A8228A500CCDF90 /* Ext+ADLabel.swift */,
 			);
 			path = Ext;
+			sourceTree = "<group>";
+		};
+		26E5EA522A82376C00CCDF90 /* Beer */ = {
+			isa = PBXGroup;
+			children = (
+				26E5EA452A8210AB00CCDF90 /* BeerDetailViewController.swift */,
+				26E5EA5F2A823E9800CCDF90 /* Beer.swift */,
+				26E5EA532A82396400CCDF90 /* BeerViewController.swift */,
+				26E5EA562A823ACC00CCDF90 /* TableViewCell */,
+				26E5EA552A823AC300CCDF90 /* CollectionViewCell */,
+			);
+			path = Beer;
+			sourceTree = "<group>";
+		};
+		26E5EA552A823AC300CCDF90 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				26E5EA572A823AE400CCDF90 /* CollectionViewCell.swift */,
+				26E5EA582A823AE400CCDF90 /* CollectionViewCell.xib */,
+				26E5EA612A82512500CCDF90 /* eeCollectionViewCell.swift */,
+				26E5EA622A82512500CCDF90 /* eeCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		26E5EA562A823ACC00CCDF90 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				26E5EA5B2A823D4800CCDF90 /* TableViewCell.swift */,
+				26E5EA5C2A823D4800CCDF90 /* TableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +218,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				26E5EA362A81FB0A00CCDF90 /* LaunchScreen.storyboard in Resources */,
+				26E5EA5E2A823D4800CCDF90 /* TableViewCell.xib in Resources */,
 				26E5EA332A81FB0A00CCDF90 /* Assets.xcassets in Resources */,
+				26E5EA5A2A823AE400CCDF90 /* CollectionViewCell.xib in Resources */,
+				26E5EA642A82512500CCDF90 /* eeCollectionViewCell.xib in Resources */,
 				26E5EA312A81FB0800CCDF90 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,9 +233,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E5EA542A82396400CCDF90 /* BeerViewController.swift in Sources */,
 				26E5EA512A8228A500CCDF90 /* Ext+ADLabel.swift in Sources */,
+				26E5EA632A82512500CCDF90 /* eeCollectionViewCell.swift in Sources */,
+				26E5EA592A823AE400CCDF90 /* CollectionViewCell.swift in Sources */,
+				26E5EA602A823E9800CCDF90 /* Beer.swift in Sources */,
 				26E5EA4B2A821CA600CCDF90 /* Ext+UIView.swift in Sources */,
-				26E5EA462A8210AB00CCDF90 /* BeerViewController.swift in Sources */,
+				26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */,
+				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
 				26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */,
 				26E5EA4D2A82216900CCDF90 /* GameViewController.swift in Sources */,

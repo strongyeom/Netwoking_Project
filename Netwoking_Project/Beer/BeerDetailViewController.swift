@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
-class BeerViewController: UIViewController {
+class BeerDetailViewController: UIViewController {
     
     @IBOutlet var randomBtn: UIButton!
     
