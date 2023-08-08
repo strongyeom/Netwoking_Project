@@ -12,6 +12,10 @@ import Kingfisher
 
 class BeerDetailViewController: UIViewController {
     
+    static let identifier = "BeerDetailViewController"
+    
+    var clickCellStatus: ClickCellStatus = .tableSelected
+    
     @IBOutlet var randomBtn: UIButton!
     
     @IBOutlet var beerImage: UIImageView!
@@ -22,21 +26,35 @@ class BeerDetailViewController: UIViewController {
     
     @IBOutlet var borderLineView: UIView!
     
+    var beer: Beer?
+    
     @IBOutlet var beerDescription: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settingInitial()
-       
-        
+        print("clickCellStatus : \(clickCellStatus)")
+        settingInitial(data: beer)
         self.randomBtn.addTarget(self, action: #selector(randomBtnClicked(_:)), for: .touchUpInside)
+        
+        switch clickCellStatus {
+        case .collectionSelected:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(leftBtnClicked(_:)))
+        case .tableSelected:
+            print("!23")
+        }
     }
     
-    func settingInitial() {
-        self.beerImage.image = UIImage(named: "beerImage")
+    @objc func leftBtnClicked(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
+    func settingInitial(data: Beer?) {
+        guard let data else { return }
+        let imageUrl = URL(string: data.ImageUrl)
         
-        self.beerTitle.text = "제목"
-        self.beerDescription.text = "내용"
+        self.beerImage.kf.setImage(with: imageUrl)
+        self.beerTitle.text = "제목 : \(data.title)"
+        self.beerDescription.text = data.description
        
         self.beerDescription.numberOfLines = 5
         self.beerDescription.font = UIFont.systemFont(ofSize: 13, weight: .light)

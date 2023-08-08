@@ -300,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="2970.2290076335876" y="-2.1126760563380285"/>
         </scene>
-        <!--새싹비어-->
+        <!--Beer View Controller-->
         <scene sceneID="VIn-GZ-jcn">
             <objects>
                 <viewController id="VIt-KP-Ob4" customClass="BeerViewController" customModule="Netwoking_Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -309,18 +309,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4yG-Ee-SRD">
-                                <rect key="frame" x="0.0" y="415" width="393" height="354"/>
+                                <rect key="frame" x="0.0" y="459" width="393" height="310"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2bF-sL-wF6">
-                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="VIt-KP-Ob4" id="3uB-YS-8r4"/>
                                 </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1O-Ml-mn5">
-                                <rect key="frame" x="0.0" y="115" width="393" height="300"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="300"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gu3-Dv-1nO">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
@@ -370,7 +370,7 @@
                             <constraint firstItem="2bF-sL-wF6" firstAttribute="leading" secondItem="fWq-Aj-QhF" secondAttribute="leading" id="ys5-Hm-7G5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="새싹비어" image="wineglass.fill" catalog="system" id="lW1-Jd-dkf"/>
+                    <navigationItem key="navigationItem" id="ORK-OO-QlI"/>
                     <connections>
                         <outlet property="collectionBg" destination="c1O-Ml-mn5" id="ccr-Jr-wvE"/>
                         <outlet property="collectionView" destination="Gu3-Dv-1nO" id="cVS-Ml-XQI"/>
@@ -379,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ws-Bl-dDK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66.412213740458014" y="775.35211267605632"/>
+            <point key="canvasLocation" x="2970.2290076335876" y="761.97183098591552"/>
         </scene>
         <!--켈리-->
         <scene sceneID="i5T-3e-2mW">
@@ -469,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfg-qW-fYa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944" y="775"/>
+            <point key="canvasLocation" x="3722.9007633587785" y="774.64788732394368"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="taN-oZ-tg7">
@@ -477,12 +477,13 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ND1-fp-r2r" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AQ8-JZ-fN6">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="5PQ-Fy-RrT" kind="relationship" relationship="viewControllers" id="JhN-xQ-jfo"/>
-                        <segue destination="VIt-KP-Ob4" kind="relationship" relationship="viewControllers" id="jTW-FR-w3A"/>
+                        <segue destination="25V-IG-xrF" kind="relationship" relationship="viewControllers" id="NF2-M9-Da1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfa-yq-3d8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -507,6 +508,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gh1-Sf-f3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1232.824427480916" y="-2.1126760563380285"/>
+        </scene>
+        <!--새싹비어-->
+        <scene sceneID="RN0-tO-ogX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="25V-IG-xrF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="새싹비어" image="wineglass.fill" catalog="system" id="Lmp-I3-hHg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6uS-EN-Qqt">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VIt-KP-Ob4" kind="relationship" relationship="rootViewController" id="WVa-jG-1Du"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQ2-k3-d9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2043.5114503816792" y="761.97183098591552"/>
         </scene>
     </scenes>
     <resources>

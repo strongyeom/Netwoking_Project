@@ -22,8 +22,8 @@
                             <constraint firstAttribute="width" constant="100" id="S0w-eL-0Ar"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dke-mf-tpI">
-                        <rect key="frame" x="120" y="0.0" width="188" height="192"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dke-mf-tpI">
+                        <rect key="frame" x="120" y="10" width="188" height="172"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7L-Za-6ze">
                                 <rect key="frame" x="0.0" y="0.0" width="188" height="20.333333333333332"/>
@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrt-pb-ruH">
-                                <rect key="frame" x="0.0" y="32.333333333333329" width="188" height="159.66666666666669"/>
+                                <rect key="frame" x="0.0" y="25.333333333333329" width="188" height="146.66666666666669"/>
                                 <string key="text">LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -50,8 +50,8 @@
                 <constraint firstItem="hkz-ho-RRO" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ZUn-Cx-F5l"/>
                 <constraint firstItem="hkz-ho-RRO" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottom" id="fnw-lz-vzC"/>
                 <constraint firstAttribute="trailing" secondItem="dke-mf-tpI" secondAttribute="trailing" constant="20" id="lPd-vZ-xCH"/>
-                <constraint firstItem="dke-mf-tpI" firstAttribute="bottom" secondItem="hkz-ho-RRO" secondAttribute="bottom" id="n6d-jk-d2R"/>
-                <constraint firstItem="dke-mf-tpI" firstAttribute="top" secondItem="hkz-ho-RRO" secondAttribute="top" id="x7x-Ob-L7S"/>
+                <constraint firstItem="dke-mf-tpI" firstAttribute="bottom" secondItem="hkz-ho-RRO" secondAttribute="bottom" constant="-10" id="n6d-jk-d2R"/>
+                <constraint firstItem="dke-mf-tpI" firstAttribute="top" secondItem="hkz-ho-RRO" secondAttribute="top" constant="10" id="x7x-Ob-L7S"/>
             </constraints>
             <size key="customSize" width="328" height="192"/>
             <connections>

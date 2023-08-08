@@ -20,6 +20,7 @@ class CollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.headerCollDesc.settingDescrition()
+        self.backgroundColor = .systemGray6
     }
     
     func settingKingfisher(urlString: String) {

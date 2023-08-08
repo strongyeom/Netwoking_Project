@@ -16,6 +16,8 @@ class BeerViewController: UIViewController {
     @IBOutlet var collectionBg: UIView!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
+
+    var clickCellStatus: ClickCellStatus = .tableSelected
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class BeerViewController: UIViewController {
         callRequest()
         settingCollectionView()
         settingCollectionViewLayout()
+        
+        clickCellStatus = .tableSelected
     }
     
     func settingTableView() {
@@ -116,6 +120,18 @@ extension BeerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("TableViewCell 선택 :\(beerList[indexPath.row].title)")
+        clickCellStatus = .tableSelected
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let selecetdBeer = beerList[indexPath.row]
+        guard let vc = sb.instantiateViewController(withIdentifier: BeerDetailViewController.identifier) as? BeerDetailViewController else { return }
+        
+        vc.beer = selecetdBeer
+        vc.clickCellStatus = clickCellStatus
+        
+        // ⭐️ 네비게이션으로 화면 전환하려면 꼭 스토리보드에 임베디드 되어 있어야함
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 
@@ -146,6 +162,19 @@ extension BeerViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionViewCell 선택 :\(beerList[indexPath.row].title)")
+        clickCellStatus = .collectionSelected
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let selecetdBeer = beerList[indexPath.row]
+        guard let vc = sb.instantiateViewController(withIdentifier: BeerDetailViewController.identifier) as? BeerDetailViewController else { return }
+        
+        vc.beer = selecetdBeer
+        vc.clickCellStatus = clickCellStatus
+        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+       present(nav, animated: true)
+        
     }
 }
 

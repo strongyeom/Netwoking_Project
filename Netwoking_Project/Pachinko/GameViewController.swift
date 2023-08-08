@@ -45,11 +45,7 @@ class GameViewController: UIViewController {
        
         callRequest(btn: sender)
         
-        if pachincoResult[0].text == "7" && pachincoResult[1].text == "7" && pachincoResult[2].text == "7" {
-            resultTextLabel.settingRandomAD()
-            resultTextLabel.textColor = .blue
-            resultTextLabel.text = "복권 드가자!!"
-        }
+
        
     }
     
@@ -70,6 +66,10 @@ class GameViewController: UIViewController {
                 self.exampleCollection.append(contentsOf: [number1, number2, number3])
                 self.pachincoResult[btn.tag].text = "\(self.exampleCollection[btn.tag])"
              
+                if self.pachincoResult[btn.tag].text == "7" {
+                    self.pachincoResult[btn.tag].textColor = .orange
+                }
+        
                 self.exampleCollection = []
                
             case .failure(let error):
