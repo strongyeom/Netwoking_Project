@@ -11,10 +11,19 @@ import SwiftyJSON
 
 class KakoBookVCViewController: UIViewController {
     
+    
+    
     @IBOutlet var searchBar: UISearchBar!
     
+    @IBOutlet var searchBookCount: UILabel!
     var bookList: [KakoBook] = []
 
+    var page: Int = 1
+    
+    var isEnd: Bool = false
+    
+    var pageableCount: Int = 0
+    
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -23,14 +32,15 @@ class KakoBookVCViewController: UIViewController {
         settingInitial()
         settingCollectionViewLayout()
         settingSearchBar()
-        callRequest()
+        callRequest(page: page, isEnd: isEnd)
+        searchBookCount.text = "도서 검색 \(pageableCount)개"
     }
     
     func settingInitial() {
        
         kakaoCollectionView.delegate = self
         kakaoCollectionView.dataSource = self
-        
+        kakaoCollectionView.prefetchDataSource = self
         let nib = UINib(nibName: KakaoCollectionViewCell.identifier, bundle: nil)
         
         kakaoCollectionView.register(nib, forCellWithReuseIdentifier:  KakaoCollectionViewCell.identifier)
@@ -53,24 +63,37 @@ class KakoBookVCViewController: UIViewController {
     }
   
     
-    func callRequest(text: String = "성공") {
-        self.bookList.removeAll()
+    func callRequest(text: String = "성공", page: Int, isEnd: Bool) {
+        //self.bookList.removeAll()
+        
         let textASCII = "\(text)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(textASCII)&size=30"
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(textASCII)&size=15&page=\(page)&is_end=\(isEnd)"
         let header: HTTPHeaders = ["Authorization" : APIKey.KakoKey]
+        
         print("url",url)
+        
         AF.request(url, method: .get, headers: header).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 print("json",json)
+                
+                self.pageableCount = json["meta"]["pageable_count"].intValue
+                print("callRequest - pageableCount",self.pageableCount)
+              
                 for item in json["documents"].arrayValue {
                     let imageTitle = item["thumbnail"].stringValue
                     let bookname = item["title"].stringValue
+                   
                     let data = KakoBook(imageUrl: imageTitle, bookTitle: bookname)
+                   
+                    
                     self.bookList.append(data)
-                    self.kakaoCollectionView.reloadData()
                 }
+                
+                self.searchBookCount.text = "\(text) 검색 수 : \(self.pageableCount)개"
+                
+                self.kakaoCollectionView.reloadData()
                
             case .failure(let error):
                 print(error)
@@ -102,19 +125,49 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
     
 }
 
+
+// MARK: - UICollectionViewDataSourcePrefetching
+extension KakoBookVCViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        // 응답 메세지로 page에 대한 값이 정해져 있다면 조건을 추가해준다.
+        // 또한 마지막 페이지가 나오면 더이상 page를 증가시키지 않는다.
+        for indexPath in indexPaths {
+            if self.bookList.count-1 == indexPath.row && page < 50 && isEnd == false {
+                page += 1
+                callRequest(page: page, isEnd: isEnd)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print("취소 됨 \(indexPaths)")
+    }
+    
+    
+}
+
+
+
+
 // MARK: - UISearchBarDelegate
 extension KakoBookVCViewController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        callRequest(text: text)
+        page = 1
+        self.bookList.removeAll()
+        callRequest(text: text, page: page, isEnd: isEnd)
+        print("pageableCount",pageableCount)
         searchBar.text = ""
         view.endEditing(true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        page = 1
+        
         searchBar.text = ""
-        callRequest()
+        callRequest(page: page, isEnd: isEnd)
         view.endEditing(true)
         
     }

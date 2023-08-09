@@ -25,7 +25,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C9M-wo-k2d">
-                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
+                                <rect key="frame" x="0.0" y="219" width="393" height="550"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0c8-e2-Flz">
                                     <size key="itemSize" width="128" height="128"/>
@@ -44,17 +44,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFL-u6-GHi">
+                                <rect key="frame" x="0.0" y="159" width="393" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RT-gL-AhY">
+                                        <rect key="frame" x="331.66666666666669" y="10" width="41.333333333333314" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="7QA-ZB-aDX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FST-2d-Fx9"/>
+                                    <constraint firstItem="9RT-gL-AhY" firstAttribute="centerY" secondItem="lFL-u6-GHi" secondAttribute="centerY" id="dzD-MO-YYC"/>
+                                    <constraint firstAttribute="trailing" secondItem="9RT-gL-AhY" secondAttribute="trailing" constant="20" id="xt0-X8-SIh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="C9M-wo-k2d" secondAttribute="trailing" id="26f-u7-bTH"/>
-                            <constraint firstItem="C9M-wo-k2d" firstAttribute="top" secondItem="yzb-UU-pJV" secondAttribute="bottom" id="UxN-rp-0WK"/>
+                            <constraint firstItem="lFL-u6-GHi" firstAttribute="top" secondItem="yzb-UU-pJV" secondAttribute="bottom" id="Op2-dW-WaE"/>
                             <constraint firstItem="yzb-UU-pJV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ZQk-KV-YP6"/>
                             <constraint firstItem="yzb-UU-pJV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eqb-ok-BeF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="C9M-wo-k2d" secondAttribute="bottom" id="fpL-jS-RJ0"/>
+                            <constraint firstItem="lFL-u6-GHi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gFd-Te-dFJ"/>
                             <constraint firstItem="C9M-wo-k2d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mb3-UF-qsn"/>
                             <constraint firstItem="yzb-UU-pJV" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="wKD-UO-46W"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lFL-u6-GHi" secondAttribute="trailing" id="wTm-qX-6KC"/>
+                            <constraint firstItem="C9M-wo-k2d" firstAttribute="top" secondItem="lFL-u6-GHi" secondAttribute="bottom" id="yIh-aI-h4i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kQN-oV-SBg"/>
@@ -62,11 +85,12 @@
                     <connections>
                         <outlet property="kakaoCollectionView" destination="C9M-wo-k2d" id="K6z-xM-bpY"/>
                         <outlet property="searchBar" destination="yzb-UU-pJV" id="OcQ-uT-oKQ"/>
+                        <outlet property="searchBookCount" destination="9RT-gL-AhY" id="stR-Le-rjb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1055.7251908396945" y="-27.464788732394368"/>
         </scene>
         <!--Book-->
         <scene sceneID="mgk-2x-XaN">
