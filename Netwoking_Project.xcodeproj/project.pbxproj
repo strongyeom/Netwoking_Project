@@ -35,6 +35,7 @@
 		26E5EA792A829A8D00CCDF90 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA782A829A8D00CCDF90 /* APIKey.swift */; };
 		26E5EA802A829F6900CCDF90 /* KakaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */; };
 		26E5EA812A829F6900CCDF90 /* KakaoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */; };
+		26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		26E5EA782A829A8D00CCDF90 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCollectionViewCell.swift; sourceTree = "<group>"; };
 		26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KakaoCollectionViewCell.xib; sourceTree = "<group>"; };
+		26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */,
 				26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */,
 				26E5EA742A82987900CCDF90 /* KakoBook.swift */,
+				26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */,
 			);
 			path = KakaoBookSearch;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				26E5EA4B2A821CA600CCDF90 /* Ext+UIView.swift in Sources */,
 				26E5EA6A2A8291C600CCDF90 /* ClickCellStatus.swift in Sources */,
 				26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */,
+				26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */,
 				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
 				26E5EA752A82987900CCDF90 /* KakoBook.swift in Sources */,

@@ -23,12 +23,12 @@ class KakoBookVCViewController: UIViewController {
     var isEnd: Bool = false
     
     var pageableCount: Int = 0
-    
-   
-    let indicator = UIActivityIndicatorView(style: .large)
-    
+
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
+    // indicator 생성
+    let footerView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "카카오 책 검색"
@@ -37,10 +37,7 @@ class KakoBookVCViewController: UIViewController {
         settingSearchBar()
         callRequest(page: page, isEnd: isEnd)
         searchBookCount.text = "도서 검색 \(pageableCount)개"
-       
-        indicator.tintColor = .red
-        self.kakaoCollectionView.addSubview(indicator)
-        
+     
     }
     
     func settingInitial() {
@@ -51,12 +48,16 @@ class KakoBookVCViewController: UIViewController {
         let nib = UINib(nibName: KakaoCollectionViewCell.identifier, bundle: nil)
         
         kakaoCollectionView.register(nib, forCellWithReuseIdentifier:  KakaoCollectionViewCell.identifier)
+        
+        // nib을 연결하는 것이 아니라 footer 설정시 collectionView와 footer를 연결하는 과정
+        kakaoCollectionView.register(CollectionViewFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionViewFooterView.identifier)
     }
     
     func settingSearchBar() {
         searchBar.delegate = self
         searchBar.placeholder = "도서를 검색해주세요"
     }
+    
     func settingCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -66,6 +67,8 @@ class KakoBookVCViewController: UIViewController {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        // collectonView bottom indicator layout
+        layout.footerReferenceSize = CGSize(width: kakaoCollectionView.bounds.width, height: 50)
         kakaoCollectionView.collectionViewLayout = layout
     }
   
@@ -124,7 +127,7 @@ extension KakoBookVCViewController : UICollectionViewDelegate {
         
         let doneScrollOffSet = contentSize - scrollViewHeight
         print("contentSize",contentSize)
-        print("offset ",offset)
+        print("offset",offset)
         print("scrollViewHeight",scrollViewHeight)
         print("doneScrollOffSet",doneScrollOffSet)
         print("targetContentOffset.y",targetPointOfy)
@@ -133,6 +136,19 @@ extension KakoBookVCViewController : UICollectionViewDelegate {
             print("바닥이다")
             page += 1
             callRequest(page: page, isEnd: isEnd)
+            // indicator 시작
+            footerView.startAnimating()
+            
+            // 메인 뷰 ( 사용자에게 보여지는 화면 ) 몇 초 후 딜레이를 줄 것 인지
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                guard let self else { return }
+                // 몇 초 후에 indicator 애니메이션 중지
+                footerView.stopAnimating()
+                print("1초 뒤 ")
+                // 현재 스크롤 포인트에서 설정된 데이터 통신 값 불러오기
+                callRequest(page: page, isEnd: isEnd)
+                
+            }
         }
     }
 }
@@ -140,6 +156,17 @@ extension KakoBookVCViewController : UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 extension KakoBookVCViewController: UICollectionViewDataSource {
+  
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+         if kind == UICollectionView.elementKindSectionFooter {
+             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewFooterView.identifier, for: indexPath)
+             footer.addSubview(footerView)
+             footerView.frame = CGRect(x: 0, y: 0, width: collectionView.bounds.width, height: 50)
+             footerView.color = .red
+             return footer
+         }
+         return UICollectionReusableView()
+     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
