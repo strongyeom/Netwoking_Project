@@ -18,8 +18,6 @@ class KakaoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         bookImage.contentMode = .scaleAspectFill
-        bookImage.layer.cornerRadius = 8
-        bookImage.clipsToBounds = true
         bookname.font = UIFont.systemFont(ofSize: 13, weight: .medium)
     }
     

@@ -14,17 +14,12 @@ class KakoBookVCViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     
     var bookList: [KakoBook] = []
-    
-    var searchList: [KakoBook] = []
-    
-    // var searchString: String = "성공"
-    
+
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "카카오 책 검색"
-        searchList = bookList
         settingInitial()
         settingCollectionViewLayout()
         settingSearchBar()
@@ -59,8 +54,7 @@ class KakoBookVCViewController: UIViewController {
   
     
     func callRequest(text: String = "성공") {
-        searchList.removeAll()
-        
+        self.bookList.removeAll()
         let textASCII = "\(text)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = "https://dapi.kakao.com/v3/search/book?query=\(textASCII)&size=30"
         let header: HTTPHeaders = ["Authorization" : APIKey.KakoKey]
@@ -74,58 +68,53 @@ class KakoBookVCViewController: UIViewController {
                     let imageTitle = item["thumbnail"].stringValue
                     let bookname = item["title"].stringValue
                     let data = KakoBook(imageUrl: imageTitle, bookTitle: bookname)
-                    self.searchList.append(data)
+                    self.bookList.append(data)
                     self.kakaoCollectionView.reloadData()
                 }
-                
-                if json["meta"]["total_Count"].intValue < 1 {
-                    print("검색 결과 없음")
-                }
-                
+               
             case .failure(let error):
                 print(error)
             }
         }
     }
 }
+
+// MARK: - UICollectionViewDelegate
 extension KakoBookVCViewController : UICollectionViewDelegate {
     
 }
 
+
+// MARK: - UICollectionViewDataSource
 extension KakoBookVCViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchList.count
+        return bookList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KakaoCollectionViewCell.identifier, for: indexPath) as? KakaoCollectionViewCell else { return UICollectionViewCell() }
         
-        let item = searchList[indexPath.item]
+        let item = bookList[indexPath.item]
         
         cell.configure(item: item)
         return cell
     }
     
 }
+
+// MARK: - UISearchBarDelegate
 extension KakoBookVCViewController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
         callRequest(text: text)
-        kakaoCollectionView.reloadData()
         searchBar.text = ""
         view.endEditing(true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let text = searchBar.text else { return }
-        callRequest(text: text)
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchList = bookList
         searchBar.text = ""
+        callRequest()
         view.endEditing(true)
         
     }
