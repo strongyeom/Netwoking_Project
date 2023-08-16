@@ -16,7 +16,7 @@ class KakoBookVCViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     
     @IBOutlet var searchBookCount: UILabel!
-    var bookList: [KakoBook] = []
+    var bookList: KakaoBook = KakaoBook(documents: [], meta: Meta(isEnd: true, pageableCount: 0, totalCount: 0))
 
     var page: Int = 1
     
@@ -82,32 +82,38 @@ class KakoBookVCViewController: UIViewController {
         
         print("url",url)
         
-        AF.request(url, method: .get, headers: header).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-               // print("json",json)
+        AF.request(url, method: .get, headers: header).validate()
+            .responseDecodable(of: KakaoBook.self) { result in
                 
-                self.pageableCount = json["meta"]["pageable_count"].intValue
-                // print("callRequest - pageableCount",self.pageableCount)
-              
-                for item in json["documents"].arrayValue {
-                    let imageTitle = item["thumbnail"].stringValue
-                    let bookname = item["title"].stringValue
-                   
-                    let data = KakoBook(imageUrl: imageTitle, bookTitle: bookname)
-                   
-                    self.bookList.append(data)
-                }
-                
-                self.searchBookCount.text = "\(text) 검색 수 : \(self.pageableCount)개"
-                
+                self.bookList.documents.append(contentsOf: result.value!.documents)
                 self.kakaoCollectionView.reloadData()
-               
-            case .failure(let error):
-                print(error)
             }
-        }
+//            .responseJSON { response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//               // print("json",json)
+//
+//                self.pageableCount = json["meta"]["pageable_count"].intValue
+//                // print("callRequest - pageableCount",self.pageableCount)
+//
+//                for item in json["documents"].arrayValue {
+//                    let imageTitle = item["thumbnail"].stringValue
+//                    let bookname = item["title"].stringValue
+//
+//                    let data = KakoBook(imageUrl: imageTitle, bookTitle: bookname)
+//
+//                    self.bookList.append(data)
+//                }
+//
+//                self.searchBookCount.text = "\(text) 검색 수 : \(self.pageableCount)개"
+//
+//                self.kakaoCollectionView.reloadData()
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }
 
@@ -170,13 +176,13 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookList.count
+        return bookList.documents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KakaoCollectionViewCell.identifier, for: indexPath) as? KakaoCollectionViewCell else { return UICollectionViewCell() }
         
-        let item = bookList[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KakaoCollectionViewCell.identifier, for: indexPath) as? KakaoCollectionViewCell else { return UICollectionViewCell() }
+        let item = bookList.documents[indexPath.item]
         
         cell.configure(item: item)
         return cell
@@ -190,10 +196,12 @@ extension KakoBookVCViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         print("UICollectionViewDataSourcePrefetching")
+       
         // 응답 메세지로 page에 대한 값이 정해져 있다면 조건을 추가해준다.
         // 또한 마지막 페이지가 나오면 더이상 page를 증가시키지 않는다.
         for indexPath in indexPaths {
-            if self.bookList.count-1 == indexPath.row && page < 50 && isEnd == false {
+            
+            if bookList.documents.count - 1 == indexPath.row && page < 50 && isEnd == false {
                 page += 1
                 callRequest(page: page, isEnd: isEnd)
             }
@@ -216,7 +224,7 @@ extension KakoBookVCViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
         page = 1
-        self.bookList.removeAll()
+        self.bookList.documents = []
         callRequest(text: text, page: page, isEnd: isEnd)
         print("pageableCount",pageableCount)
         searchBar.text = ""

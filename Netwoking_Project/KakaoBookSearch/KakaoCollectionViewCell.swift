@@ -21,9 +21,9 @@ class KakaoCollectionViewCell: UICollectionViewCell {
         bookname.font = UIFont.systemFont(ofSize: 13, weight: .medium)
     }
     
-    func configure(item : KakoBook) {
-        settingKingfisher(urlString: item.imageUrl)
-        self.bookname.text = item.bookTitle
+    func configure(item : Document) {
+        settingKingfisher(urlString: item.thumbnail)
+        self.bookname.text = item.title
     }
     
     func settingKingfisher(urlString: String) {

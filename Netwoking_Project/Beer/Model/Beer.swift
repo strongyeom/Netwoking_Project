@@ -12,5 +12,3 @@ struct Beer {
     var title: String
     var description: String
 }
-
-

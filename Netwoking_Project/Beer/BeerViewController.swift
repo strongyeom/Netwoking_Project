@@ -155,7 +155,7 @@ extension BeerViewController: UICollectionViewDataSource {
         print("collectionView - cellForItemAt")
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         let item = beerList[indexPath.item]
-        cell.configure(item: item)
+         cell.configure(item: item)
 
         return cell
     }
@@ -163,18 +163,18 @@ extension BeerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionViewCell 선택 :\(beerList[indexPath.row].title)")
         clickCellStatus = .collectionSelected
-        
+
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let selecetdBeer = beerList[indexPath.row]
         guard let vc = sb.instantiateViewController(withIdentifier: BeerDetailViewController.identifier) as? BeerDetailViewController else { return }
-        
+
         vc.beer = selecetdBeer
         vc.clickCellStatus = clickCellStatus
-        
+
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
        present(nav, animated: true)
-        
+
     }
 }
 
