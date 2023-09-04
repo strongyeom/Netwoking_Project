@@ -58,7 +58,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bookAuthor" destination="Gge-EZ-stc" id="hh6-WM-zfD"/>
+                <outlet property="bookAuthor" destination="Gge-EZ-stc" id="6lV-df-Ub5"/>
                 <outlet property="bookPrice" destination="MEc-2p-JPe" id="Iip-9W-9eP"/>
                 <outlet property="bookThumbnail" destination="lvg-yr-ww4" id="0IS-Qa-nVi"/>
                 <outlet property="bookTitle" destination="lyQ-Cv-Dcr" id="gCT-dC-sxV"/>

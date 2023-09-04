@@ -22,6 +22,8 @@ struct KakaoBook: Codable {
 struct Document: Codable {
     let thumbnail: String
     let title: String
+    let price: Int
+    let authors: [String]
 }
 
 // MARK: - Meta

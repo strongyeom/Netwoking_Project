@@ -11,11 +11,9 @@ class MyFavoriteBookTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookThumbnail: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
-    @IBOutlet weak var bookAuthor: UILabel!
     @IBOutlet weak var bookPrice: UILabel!
+    @IBOutlet weak var bookAuthor: UILabel!
     
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         bookTitle.font = .systemFont(ofSize: 20, weight: .medium)

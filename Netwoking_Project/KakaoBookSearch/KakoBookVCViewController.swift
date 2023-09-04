@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class KakoBookVCViewController: UIViewController {
     
@@ -23,6 +24,8 @@ class KakoBookVCViewController: UIViewController {
     var isEnd: Bool = false
     
     var pageableCount: Int = 0
+    
+   // var completionHandler: ((Realm) -> Void)?
 
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
@@ -85,7 +88,13 @@ class KakoBookVCViewController: UIViewController {
         AF.request(url, method: .get, headers: header).validate()
             .responseDecodable(of: KakaoBook.self) { result in
                 
-                self.bookList.documents.append(contentsOf: result.value!.documents)
+                switch result.result {
+                case .success(let data):
+                    self.bookList.documents.append(contentsOf: data.documents)
+                case .failure(let error):
+                    print(error)
+                }
+                
                 self.kakaoCollectionView.reloadData()
             }
 //            .responseJSON { response in
@@ -187,6 +196,28 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
         cell.configure(item: item)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = bookList.documents[indexPath.item]
+//        print("선택된 book : \(selectedItem)")
+//
+        // 경로 찾기
+        let realm = try! Realm()
+        let transferString = List<String>()
+        transferString.append(objectsIn: selectedItem.authors)
+        print("List형태 어떻게 담기려나? \(transferString)")
+        // 식판 만들기 : 어떤 요소로 구성할 것인지
+        let task = BookTable(bookTitle: selectedItem.title, author: transferString, price: selectedItem.price, bookThumbnail: selectedItem.thumbnail)
+
+        try! realm.write {
+            realm.add(task)
+            print("Realm Add Succeed")
+        }
+        dismiss(animated: true)
+        
+    }
+    
+    
     
 }
 
