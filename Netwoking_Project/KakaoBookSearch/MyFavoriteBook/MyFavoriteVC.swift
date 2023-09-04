@@ -77,7 +77,7 @@ extension MyFavoriteVC : UITableViewDelegate, UITableViewDataSource {
             authors.append(author)
         }
         
-        let commaSeparatedString = authors.joined(separator: ",")
+        let commaSeparatedString = authors.joined(separator: ", ")
         
         print("어떻게 담김? \(commaSeparatedString)")
         cell.bookAuthor.text = commaSeparatedString
