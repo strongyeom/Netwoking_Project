@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="KGk-i7-Jjw" customClass="MyFavoriteBookTableViewCell" customModule="Netwoking_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="383" height="176"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="383" height="176"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lvg-yr-ww4">
+                        <rect key="frame" x="10" y="10" width="156" height="156"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="lvg-yr-ww4" secondAttribute="height" multiplier="1:1" id="vus-mY-d87"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="wKI-mn-ooE">
+                        <rect key="frame" x="185" y="10" width="188" height="156"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyQ-Cv-Dcr">
+                                <rect key="frame" x="0.0" y="0.0" width="188" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gge-EZ-stc">
+                                <rect key="frame" x="0.0" y="55" width="188" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-2p-JPe">
+                                <rect key="frame" x="0.0" y="110" width="188" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wKI-mn-ooE" firstAttribute="bottom" secondItem="lvg-yr-ww4" secondAttribute="bottom" id="0Wa-tQ-XCy"/>
+                    <constraint firstAttribute="trailing" secondItem="wKI-mn-ooE" secondAttribute="trailing" constant="10" id="AAR-nx-UPz"/>
+                    <constraint firstAttribute="bottom" secondItem="lvg-yr-ww4" secondAttribute="bottom" constant="10" id="NjM-U4-MFI"/>
+                    <constraint firstItem="lvg-yr-ww4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nti-2F-Ypq"/>
+                    <constraint firstItem="lvg-yr-ww4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hmA-fu-qk1"/>
+                    <constraint firstItem="wKI-mn-ooE" firstAttribute="leading" secondItem="lvg-yr-ww4" secondAttribute="trailing" constant="19" id="hwm-c9-BCJ"/>
+                    <constraint firstItem="wKI-mn-ooE" firstAttribute="top" secondItem="lvg-yr-ww4" secondAttribute="top" id="k9r-Os-8jM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookAuthor" destination="Gge-EZ-stc" id="hh6-WM-zfD"/>
+                <outlet property="bookPrice" destination="MEc-2p-JPe" id="Iip-9W-9eP"/>
+                <outlet property="bookThumbnail" destination="lvg-yr-ww4" id="0IS-Qa-nVi"/>
+                <outlet property="bookTitle" destination="lyQ-Cv-Dcr" id="gCT-dC-sxV"/>
+            </connections>
+            <point key="canvasLocation" x="129.00763358778624" y="66.197183098591552"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -9,7 +9,7 @@ import UIKit
 
 class CollectionViewFooterView: UICollectionReusableView {
     
-    static let identifier = "CollectionReusableView"
+    // static let identifier = "CollectionReusableView"
         
     override init(frame: CGRect) {
         super.init(frame: frame)

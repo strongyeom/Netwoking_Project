@@ -12,7 +12,7 @@ import Kingfisher
 
 class BeerDetailViewController: UIViewController {
     
-    static let identifier = "BeerDetailViewController"
+    // static let identifier = "BeerDetailViewController"
     
     var clickCellStatus: ClickCellStatus = .tableSelected
     

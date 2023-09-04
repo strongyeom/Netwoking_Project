@@ -10,7 +10,7 @@ import Kingfisher
 
 class CollectionViewCell: UICollectionViewCell {
 
-    static let identifier = "CollectionViewCell"
+   //  static let identifier = "CollectionViewCell"
     @IBOutlet var headerCollImage: UIImageView!
     
     @IBOutlet var headerCollTitle: UILabel!

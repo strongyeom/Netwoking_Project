@@ -11,7 +11,7 @@ import Alamofire
 
 class GameViewController: UIViewController {
     
-    static let identifier = "GameViewController"
+   // static let identifier = "GameViewController"
 
     var timer: Timer!
     

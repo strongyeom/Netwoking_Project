@@ -10,7 +10,7 @@ import Kingfisher
 
 class KakaoCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "KakaoCollectionViewCell"
+    // static let identifier = "KakaoCollectionViewCell"
     @IBOutlet var bookImage: UIImageView!
     @IBOutlet var bookname: UILabel!
     

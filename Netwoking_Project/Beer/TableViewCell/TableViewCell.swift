@@ -10,7 +10,7 @@ import Kingfisher
 
 class TableViewCell: UITableViewCell {
     
-    static let identifier = "TableViewCell"
+    // static let identifier = "TableViewCell"
     @IBOutlet var beerImage: UIImageView!
     
     @IBOutlet var beerTitle: UILabel!

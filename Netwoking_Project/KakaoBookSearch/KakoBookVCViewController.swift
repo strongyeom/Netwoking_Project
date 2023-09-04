@@ -211,8 +211,6 @@ extension KakoBookVCViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         print("취소 됨 \(indexPaths)")
     }
-    
-    
 }
 
 
