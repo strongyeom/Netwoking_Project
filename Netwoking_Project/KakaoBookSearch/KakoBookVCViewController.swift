@@ -25,7 +25,7 @@ class KakoBookVCViewController: UIViewController {
     
     var pageableCount: Int = 0
     
-   // var completionHandler: ((Realm) -> Void)?
+    var completionHandler: ((Results<BookTable>) -> Void)?
 
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
@@ -213,6 +213,8 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
             realm.add(task)
             print("Realm Add Succeed")
         }
+        let aa = realm.objects(BookTable.self)
+        completionHandler?(aa)
         dismiss(animated: true)
         
     }
