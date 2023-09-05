@@ -36,7 +36,8 @@ class DetailViewController: UIViewController {
         detailImageView.kf.setImage(with: url)
         detailTitle.text = data.bookTitle
         detailAuthor.text = listToString(data: data)
-        
+        // let saveData = UserDefaults.standard.string(forKey: "memoText")
+        memoTextView.settingTextView(text: data.memoText )
     }
     
     func listToString(data: BookTable) -> String {
@@ -70,18 +71,18 @@ class DetailViewController: UIViewController {
         let barItems = [flexibleSpace, flexibleSpace, editButton, removeButton]
         // 버튼 아이템들을 넣어줍니다.
         self.toolbarItems = barItems
-        
-        // 버튼을 변경할 때 부드러운 애니메이션효과와 같이 사용하고 싶다면 이런 메서드도 있어요. (대신 사용 시 barItems이 변해야 겠죠?)
-        // self.setToolbarItems(barItems, animated: true)
+       
     }
-    
+     
     @objc func editBtnClicked(_ sender: UIBarButtonItem) {
         // Realm Update - 해당 record를 업데이트 하는 것
         guard let data else { return }
         let item = BookTable(value: ["_id": data._id,
                                      "bookTitle": memoTextView.text!,
-                                     "author": data.author, "bookThumbnail":data.bookThumbnail,
-                                     "price":data.price])
+                                     "author": data.author,
+                                     "bookThumbnail": data.bookThumbnail,
+                                     "price": data.price,
+                                     "memoText": memoTextView.text!])
        
         
         do {
@@ -93,6 +94,7 @@ class DetailViewController: UIViewController {
         } catch {
             print(error)
         }
+     
         
         navigationController?.popViewController(animated: true)
     }

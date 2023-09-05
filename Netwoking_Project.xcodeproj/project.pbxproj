@@ -46,6 +46,7 @@
 		26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */; };
 		26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */; };
 		26E939532AA741A700D2A79B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E939522AA741A700D2A79B /* DetailViewController.swift */; };
+		26E939552AA771D000D2A79B /* Ext+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E939542AA771D000D2A79B /* Ext+UITextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooterView.swift; sourceTree = "<group>"; };
 		26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+FileManager.swift"; sourceTree = "<group>"; };
 		26E939522AA741A700D2A79B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		26E939542AA771D000D2A79B /* Ext+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UITextView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				26E5EA502A8228A500CCDF90 /* Ext+ADLabel.swift */,
 				26E5EA652A825D4F00CCDF90 /* Ext+DescriptionText.swift */,
 				26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */,
+				26E939542AA771D000D2A79B /* Ext+UITextView.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				26E5EA752A82987900CCDF90 /* KakoBook.swift in Sources */,
 				26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */,
 				26E5EA4D2A82216900CCDF90 /* GameViewController.swift in Sources */,
+				26E939552AA771D000D2A79B /* Ext+UITextView.swift in Sources */,
 				26E5EA6F2A8296EF00CCDF90 /* KakoBookVCViewController.swift in Sources */,
 				26E5EA3E2A81FF1B00CCDF90 /* PachinkoViewController.swift in Sources */,
 				26E5EA792A829A8D00CCDF90 /* APIKey.swift in Sources */,

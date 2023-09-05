@@ -39,7 +39,7 @@ class MyFavoriteBookTableViewCell: UITableViewCell {
         
         let commaSeparatedString = transferString.joined(separator: ", ")
         
-        print("어떻게 담김? \(commaSeparatedString)")
+      // print("어떻게 담김? \(commaSeparatedString)")
         self.bookAuthor.text = commaSeparatedString
         let url = URL(string: row.bookThumbnail!)!
         self.bookThumbnail.kf.setImage(with: url)

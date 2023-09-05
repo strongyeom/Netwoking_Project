@@ -27,16 +27,10 @@ class MyFavoriteVC: UIViewController {
         settup()
         // viewDidLoad()에서 realm을 만들어 빈값을 넣어준다.
         // 왜냐하면... delegate가 먼저 타기 때문에 nil 발생함
-        
         tasks = realm.objects(BookTable.self)
         print(realm.configuration.fileURL)
 
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.favoriteTableView.reloadData()
     }
 
     func setNavigationButton() {
@@ -70,8 +64,7 @@ class MyFavoriteVC: UIViewController {
 
 extension MyFavoriteVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // print("tasks \(tasks)")
-        
+
         return tasks.count
     }
     

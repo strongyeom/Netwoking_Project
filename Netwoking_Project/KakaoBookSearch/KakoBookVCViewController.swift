@@ -104,32 +104,118 @@ class KakoBookVCViewController: UIViewController {
                 
                 self.kakaoCollectionView.reloadData()
             }
-//            .responseJSON { response in
-//            switch response.result {
-//            case .success(let value):
-//                let json = JSON(value)
-//               // print("json",json)
-//
-//                self.pageableCount = json["meta"]["pageable_count"].intValue
-//                // print("callRequest - pageableCount",self.pageableCount)
-//
-//                for item in json["documents"].arrayValue {
-//                    let imageTitle = item["thumbnail"].stringValue
-//                    let bookname = item["title"].stringValue
-//
-//                    let data = KakoBook(imageUrl: imageTitle, bookTitle: bookname)
-//
-//                    self.bookList.append(data)
-//                }
-//
-//                self.searchBookCount.text = "\(text) 검색 수 : \(self.pageableCount)개"
-//
-//                self.kakaoCollectionView.reloadData()
-//
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+    }
+}
+
+
+
+
+// MARK: - UICollectionViewDataSource
+extension KakoBookVCViewController: UICollectionViewDataSource {
+  
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+         if kind == UICollectionView.elementKindSectionFooter {
+             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewFooterView.identifier, for: indexPath)
+             footer.addSubview(footerView)
+             footerView.frame = CGRect(x: 0, y: 0, width: collectionView.bounds.width, height: 50)
+             footerView.color = .red
+             return footer
+         }
+         return UICollectionReusableView()
+     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return bookList.documents.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KakaoCollectionViewCell.identifier, for: indexPath) as? KakaoCollectionViewCell else { return UICollectionViewCell() }
+        let item = bookList.documents[indexPath.item]
+        
+        cell.configure(item: item)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = bookList.documents[indexPath.item]
+
+        let transferString = List<String>()
+        transferString.append(objectsIn: selectedItem.authors)
+        // 식판 만들기 : 어떤 요소로 구성할 것인지
+        let task = BookTable(bookTitle: selectedItem.title, author: transferString, price: selectedItem.price, bookThumbnail: selectedItem.thumbnail, memoText: "")
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! KakaoCollectionViewCell
+        
+        saveImageFileToDocument(fileName: "\(task._id).jpg", image: cell.bookImage.image!)
+        // 파일매니저 디렉토리 인식
+        
+        try! realm.write {
+            realm.add(task)
+            print("Realm Add Succeed")
+        }
+       
+        completionHandler?()
+        dismiss(animated: true)
+        
+    }
+    
+    
+    
+}
+
+
+// MARK: - UICollectionViewDataSourcePrefetching
+extension KakoBookVCViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("UICollectionViewDataSourcePrefetching")
+       
+        // 응답 메세지로 page에 대한 값이 정해져 있다면 조건을 추가해준다.
+        // 또한 마지막 페이지가 나오면 더이상 page를 증가시키지 않는다.
+        for indexPath in indexPaths {
+            
+            if bookList.documents.count - 1 == indexPath.row && page < 50 && isEnd == false {
+                page += 1
+                callRequest(page: page, isEnd: isEnd)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print("취소 됨 \(indexPaths)")
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension KakoBookVCViewController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        page = 1
+        self.bookList.documents = []
+        callRequest(text: text, page: page, isEnd: isEnd)
+        print("pageableCount",pageableCount)
+        searchBar.text = ""
+        view.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        page = 1
+        
+        searchBar.text = ""
+        callRequest(page: page, isEnd: isEnd)
+        view.endEditing(true)
+        
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
     }
 }
 
@@ -172,123 +258,5 @@ extension KakoBookVCViewController : UICollectionViewDelegate {
                 
             }
         }
-    }
-}
-
-
-// MARK: - UICollectionViewDataSource
-extension KakoBookVCViewController: UICollectionViewDataSource {
-  
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-         if kind == UICollectionView.elementKindSectionFooter {
-             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewFooterView.identifier, for: indexPath)
-             footer.addSubview(footerView)
-             footerView.frame = CGRect(x: 0, y: 0, width: collectionView.bounds.width, height: 50)
-             footerView.color = .red
-             return footer
-         }
-         return UICollectionReusableView()
-     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookList.documents.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KakaoCollectionViewCell.identifier, for: indexPath) as? KakaoCollectionViewCell else { return UICollectionViewCell() }
-        let item = bookList.documents[indexPath.item]
-        
-        cell.configure(item: item)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedItem = bookList.documents[indexPath.item]
-//        print("선택된 book : \(selectedItem)")
-//
-
-        let transferString = List<String>()
-        transferString.append(objectsIn: selectedItem.authors)
-        print("List형태 어떻게 담기려나? \(transferString)")
-        // 식판 만들기 : 어떤 요소로 구성할 것인지
-        let task = BookTable(bookTitle: selectedItem.title, author: transferString, price: selectedItem.price, bookThumbnail: selectedItem.thumbnail, memoText: "")
-        let aa = collectionView.cellForItem(at: indexPath) as! KakaoCollectionViewCell
-        saveImageFileToDocument(fileName: "\(task._id).jpg", image: aa.bookImage.image!)
-        // 파일매니저 디렉토리 인식
-        try! realm.write {
-            realm.add(task)
-            print("Realm Add Succeed")
-        }
-        
-        // let aa = realm.objects(BookTable.self)
-        // completionHandler?(aa)
-        print(task._id)
-        print(selectedItem.thumbnail)
-       
-        completionHandler?()
-        dismiss(animated: true)
-        
-    }
-    
-    
-    
-}
-
-
-// MARK: - UICollectionViewDataSourcePrefetching
-extension KakoBookVCViewController: UICollectionViewDataSourcePrefetching {
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("UICollectionViewDataSourcePrefetching")
-       
-        // 응답 메세지로 page에 대한 값이 정해져 있다면 조건을 추가해준다.
-        // 또한 마지막 페이지가 나오면 더이상 page를 증가시키지 않는다.
-        for indexPath in indexPaths {
-            
-            if bookList.documents.count - 1 == indexPath.row && page < 50 && isEnd == false {
-                page += 1
-                callRequest(page: page, isEnd: isEnd)
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        print("취소 됨 \(indexPaths)")
-    }
-}
-
-
-
-
-// MARK: - UISearchBarDelegate
-extension KakoBookVCViewController : UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
-        page = 1
-        self.bookList.documents = []
-        callRequest(text: text, page: page, isEnd: isEnd)
-        print("pageableCount",pageableCount)
-        searchBar.text = ""
-        view.endEditing(true)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        page = 1
-        
-        searchBar.text = ""
-        callRequest(page: page, isEnd: isEnd)
-        view.endEditing(true)
-        
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
     }
 }

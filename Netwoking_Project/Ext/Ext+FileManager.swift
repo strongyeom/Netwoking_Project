@@ -53,6 +53,7 @@ extension UIViewController {
         // 4. 이미지 저장
         do {
             try data.write(to: fileUrl)
+            print("document에 생성된 사진 주소 : \(data)")
         } catch {
             print(error)
         }
