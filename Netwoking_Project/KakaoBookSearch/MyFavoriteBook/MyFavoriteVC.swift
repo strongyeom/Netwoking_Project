@@ -7,11 +7,14 @@
 
 import UIKit
 import RealmSwift
-import Kingfisher
+
 
 class MyFavoriteVC: UIViewController {
     
     @IBOutlet weak var favoriteTableView: UITableView!
+    
+    
+    let realm = try! Realm()
     
     var tasks: Results<BookTable>!
     
@@ -23,9 +26,9 @@ class MyFavoriteVC: UIViewController {
         settup()
         // viewDidLoad()에서 realm을 만들어 빈값을 넣어준다.
         // 왜냐하면... delegate가 먼저 타기 때문에 nil 발생함
-        let realm = try! Realm()
+        
         tasks = realm.objects(BookTable.self)
-        print(tasks)
+        print(realm.configuration.fileURL)
     }
     
     func setNavigationButton() {
@@ -40,10 +43,10 @@ class MyFavoriteVC: UIViewController {
         guard let vc = sb.instantiateViewController(withIdentifier: KakoBookVCViewController.identifier) as? KakoBookVCViewController else { return }
         
         
-        vc.completionHandler = { result in
-            self.tasks = result
+        vc.completionHandler = {
             self.favoriteTableView.reloadData()
         }
+        
         present(vc, animated: true)
     }
     
@@ -59,34 +62,39 @@ class MyFavoriteVC: UIViewController {
 
 extension MyFavoriteVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("tasks \(tasks)")
+       // print("tasks \(tasks)")
         
         return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyFavoriteBookTableViewCell.identifier, for: indexPath) as? MyFavoriteBookTableViewCell else { return UITableViewCell() }
-        // authors는 cell이 생성되고 종료될때까지만 주기를 나타내야함... 프로퍼티로 지정되면 계속 쌓이기 때문에 관리 할 수 없음
-        var authors: [String] = []
+
+        
         let row = tasks[indexPath.row]
-        
-        // String으로 형 변환
-        let transferString = row.author.map { String($0)}
-        
-        for author in transferString {
-            authors.append(author)
-        }
-        
-        let commaSeparatedString = authors.joined(separator: ", ")
-        
-        print("어떻게 담김? \(commaSeparatedString)")
-        cell.bookAuthor.text = commaSeparatedString
-        let url = URL(string: row.bookThumbnail!)!
-        cell.bookThumbnail.kf.setImage(with: url)
-        cell.bookPrice.text = "\(row.price)원"
-        cell.bookTitle.text = row.bookTitle
-        
+        cell.bookThumbnail.image = loadImageToDocument(fileName: "\(row._id).jpg")
+        cell.configure(row: row)
+      
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let cancel = UIContextualAction(style: .destructive, title: "삭제") { action, _, _ in
+            
+            let data = self.tasks[indexPath.row]
+            self.removeImageToDocument(fileName: "\(data._id).jpg")
+            do {
+                try self.realm.write {
+                    self.realm.delete(data)
+                }
+            } catch {
+                
+            }
+            self.favoriteTableView.reloadData()
+        }
+        
+        return UISwipeActionsConfiguration(actions: [cancel])
     }
 }

@@ -44,6 +44,7 @@
 		26E5EA802A829F6900CCDF90 /* KakaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */; };
 		26E5EA812A829F6900CCDF90 /* KakaoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */; };
 		26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */; };
+		26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCollectionViewCell.swift; sourceTree = "<group>"; };
 		26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KakaoCollectionViewCell.xib; sourceTree = "<group>"; };
 		26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooterView.swift; sourceTree = "<group>"; };
+		26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+FileManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				26E5EA4A2A821CA600CCDF90 /* Ext+UIView.swift */,
 				26E5EA502A8228A500CCDF90 /* Ext+ADLabel.swift */,
 				26E5EA652A825D4F00CCDF90 /* Ext+DescriptionText.swift */,
+				26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */,
 				260BAEC22AA5BAE20034B744 /* MyFavoriteVC.swift in Sources */,
 				26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */,
+				26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */,
 				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				260BAEC52AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,

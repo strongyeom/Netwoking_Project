@@ -24,9 +24,16 @@ class KakoBookVCViewController: UIViewController {
     var isEnd: Bool = false
     
     var pageableCount: Int = 0
-    
-    var completionHandler: ((Results<BookTable>) -> Void)?
 
+    
+    // 경로 찾기
+    let realm = try! Realm()
+    
+  //  var completionHandler: ((Results<BookTable>) -> Void)?
+    
+    var completionHandler: (() -> Void)?
+
+    
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
     // indicator 생성
@@ -201,20 +208,26 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
         let selectedItem = bookList.documents[indexPath.item]
 //        print("선택된 book : \(selectedItem)")
 //
-        // 경로 찾기
-        let realm = try! Realm()
+
         let transferString = List<String>()
         transferString.append(objectsIn: selectedItem.authors)
         print("List형태 어떻게 담기려나? \(transferString)")
         // 식판 만들기 : 어떤 요소로 구성할 것인지
         let task = BookTable(bookTitle: selectedItem.title, author: transferString, price: selectedItem.price, bookThumbnail: selectedItem.thumbnail)
-
+        let aa = collectionView.cellForItem(at: indexPath) as! KakaoCollectionViewCell
+        saveImageFileToDocument(fileName: "\(task._id).jpg", image: aa.bookImage.image!)
+        // 파일매니저 디렉토리 인식
         try! realm.write {
             realm.add(task)
             print("Realm Add Succeed")
         }
-        let aa = realm.objects(BookTable.self)
-        completionHandler?(aa)
+        
+        // let aa = realm.objects(BookTable.self)
+        // completionHandler?(aa)
+        print(task._id)
+        print(selectedItem.thumbnail)
+       
+        completionHandler?()
         dismiss(animated: true)
         
     }
