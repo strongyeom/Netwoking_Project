@@ -64,7 +64,7 @@ class DetailViewController: UIViewController {
     func setupToolBarButton() {
         // 아이템에 따라 균등하게 분배
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editBtnClicked(_:)))
         let removeButton = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(removeBtnClicked(_:)))
         
         let barItems = [flexibleSpace, flexibleSpace, editButton, removeButton]
@@ -73,6 +73,28 @@ class DetailViewController: UIViewController {
         
         // 버튼을 변경할 때 부드러운 애니메이션효과와 같이 사용하고 싶다면 이런 메서드도 있어요. (대신 사용 시 barItems이 변해야 겠죠?)
         // self.setToolbarItems(barItems, animated: true)
+    }
+    
+    @objc func editBtnClicked(_ sender: UIBarButtonItem) {
+        // Realm Update - 해당 record를 업데이트 하는 것
+        guard let data else { return }
+        let item = BookTable(value: ["_id": data._id,
+                                     "bookTitle": memoTextView.text!,
+                                     "author": data.author, "bookThumbnail":data.bookThumbnail,
+                                     "price":data.price])
+       
+        
+        do {
+            // 트랜잭션에게 값 전달
+            try realm.write {
+                // modified : 수정하면서 업데이트
+                realm.add(item, update: .modified)
+            }
+        } catch {
+            print(error)
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func removeBtnClicked(_ sender: UIBarButtonItem) {

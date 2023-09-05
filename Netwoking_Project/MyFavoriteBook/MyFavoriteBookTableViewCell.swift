@@ -45,7 +45,6 @@ class MyFavoriteBookTableViewCell: UITableViewCell {
         self.bookThumbnail.kf.setImage(with: url)
         self.bookPrice.text = "\(row.price)원"
         self.bookTitle.text = row.bookTitle
-        
     }
     
 }

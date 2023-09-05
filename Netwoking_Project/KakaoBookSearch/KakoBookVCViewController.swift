@@ -213,7 +213,7 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
         transferString.append(objectsIn: selectedItem.authors)
         print("List형태 어떻게 담기려나? \(transferString)")
         // 식판 만들기 : 어떤 요소로 구성할 것인지
-        let task = BookTable(bookTitle: selectedItem.title, author: transferString, price: selectedItem.price, bookThumbnail: selectedItem.thumbnail)
+        let task = BookTable(bookTitle: selectedItem.title, author: transferString, price: selectedItem.price, bookThumbnail: selectedItem.thumbnail, memoText: "")
         let aa = collectionView.cellForItem(at: indexPath) as! KakaoCollectionViewCell
         saveImageFileToDocument(fileName: "\(task._id).jpg", image: aa.bookImage.image!)
         // 파일매니저 디렉토리 인식
