@@ -45,6 +45,7 @@
 		26E5EA812A829F6900CCDF90 /* KakaoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */; };
 		26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */; };
 		26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */; };
+		26E939532AA741A700D2A79B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E939522AA741A700D2A79B /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KakaoCollectionViewCell.xib; sourceTree = "<group>"; };
 		26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooterView.swift; sourceTree = "<group>"; };
 		26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+FileManager.swift"; sourceTree = "<group>"; };
+		26E939522AA741A700D2A79B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		260BAEBE2AA5BAA50034B744 /* MyFavoriteBook */ = {
 			isa = PBXGroup;
 			children = (
+				26E939512AA7418D00D2A79B /* DetailView */,
 				260BAEBF2AA5BAD10034B744 /* MyFavoriteVC.storyboard */,
 				260BAEC12AA5BAE20034B744 /* MyFavoriteVC.swift */,
 				260BAEC32AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift */,
@@ -148,6 +151,7 @@
 				26E5EA672A8290B600CCDF90 /* Model */,
 				26E5EA522A82376C00CCDF90 /* Beer */,
 				26E5EA6B2A8296AC00CCDF90 /* KakaoBookSearch */,
+				260BAEBE2AA5BAA50034B744 /* MyFavoriteBook */,
 				26E5EA2F2A81FB0800CCDF90 /* Main.storyboard */,
 				26E5EA322A81FB0A00CCDF90 /* Assets.xcassets */,
 				26E5EA342A81FB0A00CCDF90 /* LaunchScreen.storyboard */,
@@ -233,9 +237,16 @@
 				26E5EA7E2A829F6900CCDF90 /* KakaoCollectionViewCell.swift */,
 				26E5EA7F2A829F6900CCDF90 /* KakaoCollectionViewCell.xib */,
 				26E89A832A83EA1E00BC33E4 /* CollectionViewFooterView.swift */,
-				260BAEBE2AA5BAA50034B744 /* MyFavoriteBook */,
 			);
 			path = KakaoBookSearch;
+			sourceTree = "<group>";
+		};
+		26E939512AA7418D00D2A79B /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				26E939522AA741A700D2A79B /* DetailViewController.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +355,7 @@
 				26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */,
 				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				260BAEC52AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift in Sources */,
+				26E939532AA741A700D2A79B /* DetailViewController.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
 				26E5EA752A82987900CCDF90 /* KakoBook.swift in Sources */,
 				26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */,

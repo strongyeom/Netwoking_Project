@@ -18,6 +18,7 @@ class MyFavoriteVC: UIViewController {
     
     var tasks: Results<BookTable>!
     
+    let toolbar = UIToolbar()
    
     
     override func viewDidLoad() {
@@ -29,8 +30,15 @@ class MyFavoriteVC: UIViewController {
         
         tasks = realm.objects(BookTable.self)
         print(realm.configuration.fileURL)
+
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.favoriteTableView.reloadData()
+    }
+
     func setNavigationButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonClicked(_:)))
     }
@@ -79,11 +87,23 @@ extension MyFavoriteVC : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = tasks[indexPath.row]
+        
+        let sb = UIStoryboard(name: "MyFavoriteVC", bundle: nil)
+        
+        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+        vc.data = row
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let cancel = UIContextualAction(style: .destructive, title: "삭제") { action, _, _ in
             
             let data = self.tasks[indexPath.row]
+            
             self.removeImageToDocument(fileName: "\(data._id).jpg")
             do {
                 try self.realm.write {
