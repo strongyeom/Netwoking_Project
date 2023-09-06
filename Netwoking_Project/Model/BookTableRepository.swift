@@ -46,12 +46,24 @@ class BookTableRepository {
         }
     }
     
+    // MARK: - 해당 스키마 버젼 출력하기
+    func checkShemaVersion() {
+        
+        do {
+            let version = try schemaVersionAtURL(realm.configuration.fileURL!)
+            print("Schema Version : \(version)")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
     
     /// DB에서 필터하기
     /// - Returns: DB에서 필터 된 값 리턴
     func fetchFilter() -> Results<BookTable> {
         let result = realm.objects(BookTable.self).where {
-            $0.bookTitle.contains("성공", options: .caseInsensitive)
+            $0.bookName.contains("성공", options: .caseInsensitive)
         }
         return result
     }
@@ -64,9 +76,9 @@ class BookTableRepository {
         
         
         let item = BookTable(value: ["_id": book._id,
-                                     "bookTitle": book.bookTitle,
+                                     "bookTitle": book.bookName,
                                      "author": book.author,
-                                     "bookThumbnail": book.bookThumbnail,
+                                     "bookThumbnail": book.thumbnail,
                                      "price": book.price,
                                      "memoText": text])
        

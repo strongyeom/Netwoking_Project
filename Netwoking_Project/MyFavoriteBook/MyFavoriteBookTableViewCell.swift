@@ -41,10 +41,10 @@ class MyFavoriteBookTableViewCell: UITableViewCell {
         
       // print("어떻게 담김? \(commaSeparatedString)")
         self.bookAuthor.text = commaSeparatedString
-        let url = URL(string: row.bookThumbnail!)!
+        let url = URL(string: row.thumbnail!)!
         self.bookThumbnail.kf.setImage(with: url)
         self.bookPrice.text = "\(row.price)원"
-        self.bookTitle.text = row.bookTitle
+        self.bookTitle.text = row.bookName
     }
     
 }

@@ -23,7 +23,7 @@ class MyFavoriteVC: UIViewController {
         // viewDidLoad()에서 realm을 만들어 빈값을 넣어준다.
         // 왜냐하면... delegate가 먼저 타기 때문에 nil 발생함
         tasks = bookRepository.fetch()
-
+        bookRepository.checkShemaVersion()
         
     }
 

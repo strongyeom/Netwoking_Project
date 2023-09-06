@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let config = Realm.Configuration(schemaVersion: 8) { migration, oldSchemaVersion in
+            
+            if oldSchemaVersion < 1 {
+                // 추가 되었다.
+            }
+            
+            if oldSchemaVersion < 2 {
+                // 삭제 되었다
+            }
+            
+            if oldSchemaVersion < 3 {
+                // 컬럼 명 변경
+                migration.renameProperty(onType: BookTable.className(), from: "bookThumbnail", to: "thumbnail")
+            }
+            
+            if oldSchemaVersion < 4 {
+                // count 추가 되었음
+            }
+            
+            if oldSchemaVersion < 5 {
+                migration.enumerateObjects(ofType: BookTable.className()) { oldObject, newObject in
+                    guard let old = oldObject else { return }
+                    guard let new = newObject else { return }
+                    
+                    new["titleSummery"] = "제목은 '\(old["bookTitle"])' 이고, 내용은 '\(old["memoText"])' 입니다."
+                }
+            }
+            
+            if oldSchemaVersion < 6 {
+                migration.renameProperty(onType: BookTable.className(), from: "bookTitle", to: "bookName")
+            }
+            
+            if oldSchemaVersion < 7 {
+                // exampleCount 추가 함
+            }
+            
+            if oldSchemaVersion < 8 {
+                migration.renameProperty(onType: BookTable.className(), from: "exampleCount", to: "firstCount")
+            }
+            
+            
+            
+        }
+        
+        
+        Realm.Configuration.defaultConfiguration = config
         return true
     }
 

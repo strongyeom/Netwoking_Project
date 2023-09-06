@@ -10,18 +10,34 @@ import RealmSwift
 
 class BookTable: Object {
    @Persisted(primaryKey: true) var _id: ObjectId
-   @Persisted var bookTitle: String
+    // version 6 - 컬럼명 변경
+   @Persisted var bookName: String
    @Persisted var author: List<String>
    @Persisted var price: Int
-   @Persisted var bookThumbnail: String?
+    // version 3 - 컬럼명 변경
+   @Persisted var thumbnail: String?
    @Persisted var memoText: String?
+    // version 1 - 추가
+    // version 2 - 삭제
+  // @Persisted var like: Bool
+    
+    // version 4 - 추가
+    @Persisted var count: Int
+    // version 5 - 병합
+    @Persisted var titleSummery: String
+    
+    @Persisted var firstCount: Int
     
     convenience init(bookTitle: String, author: List<String>, price: Int, bookThumbnail: String? = nil, memoText: String? = nil) {
         self.init()
-        self.bookTitle = bookTitle
+        self.bookName = bookTitle
         self.author = author
         self.price = price
-        self.bookThumbnail = bookThumbnail
+        self.thumbnail = bookThumbnail
         self.memoText = memoText
+       // self.like = false
+        self.count = 100
+        self.titleSummery = "제목은 '\(bookTitle)' 이고, 내용은 '\(memoText ?? "비어있습니다.")' 입니다."
+        self.firstCount = 100
     }
 }

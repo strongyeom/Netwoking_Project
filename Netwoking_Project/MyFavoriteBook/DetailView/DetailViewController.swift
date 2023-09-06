@@ -38,9 +38,9 @@ class DetailViewController: UIViewController {
     
     func settup() {
         guard let data else { return }
-        let url = URL(string: data.bookThumbnail!)!
+        let url = URL(string: data.thumbnail!)!
         detailImageView.kf.setImage(with: url)
-        detailTitle.text = data.bookTitle
+        detailTitle.text = data.bookName
         detailAuthor.text = listToString(data: data)
         // let saveData = UserDefaults.standard.string(forKey: "memoText")
         memoTextView.settingTextView(text: data.memoText )
