@@ -8,18 +8,13 @@
 import UIKit
 import RealmSwift
 
-
 class MyFavoriteVC: UIViewController {
     
     @IBOutlet weak var favoriteTableView: UITableView!
-    
-    
-    let realm = try! Realm()
-    
+
     var tasks: Results<BookTable>!
-    
-    let toolbar = UIToolbar()
    
+    let bookRepository = BookTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +22,22 @@ class MyFavoriteVC: UIViewController {
         settup()
         // viewDidLoad()에서 realm을 만들어 빈값을 넣어준다.
         // 왜냐하면... delegate가 먼저 타기 때문에 nil 발생함
-        tasks = realm.objects(BookTable.self)
-        print(realm.configuration.fileURL)
+        tasks = bookRepository.fetch()
 
         
     }
 
     func setNavigationButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonClicked(_:)))
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonClicked(_:))),UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(editBtnClicked(_:)))]
+
+    }
+    
+    @objc func editBtnClicked(_ sender: UIBarButtonItem) {
+        print("수정 버튼 눌림")
+        
+        self.tasks = bookRepository.fetchFilter()
+        
+        self.favoriteTableView.reloadData()
     }
     
     @objc func plusButtonClicked(_ sender: UIBarButtonItem) {
@@ -87,7 +90,9 @@ extension MyFavoriteVC : UITableViewDelegate, UITableViewDataSource {
         
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
         vc.data = row
-        
+        vc.completionHandler = {
+            self.favoriteTableView.reloadData()
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -98,13 +103,7 @@ extension MyFavoriteVC : UITableViewDelegate, UITableViewDataSource {
             let data = self.tasks[indexPath.row]
             
             self.removeImageToDocument(fileName: "\(data._id).jpg")
-            do {
-                try self.realm.write {
-                    self.realm.delete(data)
-                }
-            } catch {
-                
-            }
+            self.bookRepository.deleteItem(item: data)
             self.favoriteTableView.reloadData()
         }
         

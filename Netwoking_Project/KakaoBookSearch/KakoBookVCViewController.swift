@@ -25,14 +25,9 @@ class KakoBookVCViewController: UIViewController {
     
     var pageableCount: Int = 0
 
-    
-    // 경로 찾기
-    let realm = try! Realm()
-    
-  //  var completionHandler: ((Results<BookTable>) -> Void)?
-    
     var completionHandler: (() -> Void)?
 
+    let bookRepository = BookTableRepository()
     
     @IBOutlet var kakaoCollectionView: UICollectionView!
     
@@ -148,21 +143,19 @@ extension KakoBookVCViewController: UICollectionViewDataSource {
         
         let cell = collectionView.cellForItem(at: indexPath) as! KakaoCollectionViewCell
         
+        bookRepository.creatItem(item: task)
+        
         saveImageFileToDocument(fileName: "\(task._id).jpg", image: cell.bookImage.image!)
         // 파일매니저 디렉토리 인식
         
-        try! realm.write {
-            realm.add(task)
-            print("Realm Add Succeed")
-        }
-       
+//        try! realm.write {
+//            realm.add(task)
+//        }
+//
         completionHandler?()
         dismiss(animated: true)
         
     }
-    
-    
-    
 }
 
 

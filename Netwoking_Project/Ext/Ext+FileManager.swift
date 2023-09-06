@@ -57,6 +57,5 @@ extension UIViewController {
         } catch {
             print(error)
         }
-        
     }
 }

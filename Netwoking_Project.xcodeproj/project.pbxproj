@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2604D9312AA851A000EFAC82 /* BookTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604D9302AA851A000EFAC82 /* BookTableRepository.swift */; };
 		260BAEC02AA5BAD10034B744 /* MyFavoriteVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260BAEBF2AA5BAD10034B744 /* MyFavoriteVC.storyboard */; };
 		260BAEC22AA5BAE20034B744 /* MyFavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BAEC12AA5BAE20034B744 /* MyFavoriteVC.swift */; };
 		260BAEC52AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BAEC32AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2604D9302AA851A000EFAC82 /* BookTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableRepository.swift; sourceTree = "<group>"; };
 		260BAEBF2AA5BAD10034B744 /* MyFavoriteVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyFavoriteVC.storyboard; sourceTree = "<group>"; };
 		260BAEC12AA5BAE20034B744 /* MyFavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteVC.swift; sourceTree = "<group>"; };
 		260BAEC32AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteBookTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				26E5EA742A82987900CCDF90 /* KakoBook.swift */,
 				26E5EA5F2A823E9800CCDF90 /* Beer.swift */,
 				260BAECA2AA5C3B10034B744 /* RealMModel.swift */,
+				2604D9302AA851A000EFAC82 /* BookTableRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26E5EA542A82396400CCDF90 /* BeerViewController.swift in Sources */,
+				2604D9312AA851A000EFAC82 /* BookTableRepository.swift in Sources */,
 				260BAEC92AA5BC1C0034B744 /* ReuseIdentiferCell.swift in Sources */,
 				26E5EA802A829F6900CCDF90 /* KakaoCollectionViewCell.swift in Sources */,
 				26E5EA662A825D4F00CCDF90 /* Ext+DescriptionText.swift in Sources */,

@@ -19,7 +19,13 @@ class DetailViewController: UIViewController {
     
     var data: BookTable?
     
+    let bookRepository = BookTableRepository()
+    
+    
+    
     let realm = try! Realm()
+    
+    var completionHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +69,7 @@ class DetailViewController: UIViewController {
     }
     
     func setupToolBarButton() {
+        
         // 아이템에 따라 균등하게 분배
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editBtnClicked(_:)))
@@ -77,23 +84,26 @@ class DetailViewController: UIViewController {
     @objc func editBtnClicked(_ sender: UIBarButtonItem) {
         // Realm Update - 해당 record를 업데이트 하는 것
         guard let data else { return }
-        let item = BookTable(value: ["_id": data._id,
-                                     "bookTitle": memoTextView.text!,
-                                     "author": data.author,
-                                     "bookThumbnail": data.bookThumbnail,
-                                     "price": data.price,
-                                     "memoText": memoTextView.text!])
-       
         
-        do {
-            // 트랜잭션에게 값 전달
-            try realm.write {
-                // modified : 수정하면서 업데이트
-                realm.add(item, update: .modified)
-            }
-        } catch {
-            print(error)
-        }
+        
+        bookRepository.updateItem(book: data, text: memoTextView.text! )
+//        let item = BookTable(value: ["_id": data._id,
+//                                     "bookTitle": memoTextView.text!,
+//                                     "author": data.author,
+//                                     "bookThumbnail": data.bookThumbnail,
+//                                     "price": data.price,
+//                                     "memoText": memoTextView.text!])
+//
+//
+//        do {
+//            // 트랜잭션에게 값 전달
+//            try realm.write {
+//                // modified : 수정하면서 업데이트
+//                realm.add(item, update: .modified)
+//            }
+//        } catch {
+//            print(error)
+//        }
      
         
         navigationController?.popViewController(animated: true)
@@ -104,14 +114,8 @@ class DetailViewController: UIViewController {
         guard let data else { return }
         self.removeImageToDocument(fileName: "\(data._id).jpg")
         
-        do {
-            try self.realm.write {
-                self.realm.delete(data)
-            }
-        } catch {
-            
-        }
-        
+        bookRepository.deleteItem(item: data)
+        completionHandler?()
         navigationController?.popViewController(animated: true)
     }
 }
