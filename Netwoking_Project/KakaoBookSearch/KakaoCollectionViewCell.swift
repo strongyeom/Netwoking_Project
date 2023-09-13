@@ -29,7 +29,6 @@ class KakaoCollectionViewCell: UICollectionViewCell {
     func settingKingfisher(urlString: String) {
         let url = URL(string: urlString)
         let processor = DownsamplingImageProcessor(size: bookImage.bounds.size)
-                     |> RoundCornerImageProcessor(cornerRadius: 20)
         bookImage.kf.indicatorType = .activity
         bookImage.kf.setImage(
             with: url,
