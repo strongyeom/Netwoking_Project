@@ -23,9 +23,6 @@ class PachinkoViewController: UIViewController {
     
     @IBOutlet var countLotto: UILabel!
     
-    // 해당 회차 로또 담기
-    var createdLottoNumber: [Int] = []
-    
     // 로또 횟차 생성
     let creatLottoCount = Array(Array(0...1000).reversed())
     
@@ -37,7 +34,6 @@ class PachinkoViewController: UIViewController {
         settingInitial()
         settingTextField()
         settingViewModel()
-        settingNumber()
     }
     
     func settingViewModel() {
@@ -91,16 +87,6 @@ class PachinkoViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func settingNumber() {
-        for index in 0..<lottoNumbers.count {
-            lottoNumbers[index].text = "\(index+1)번 번호"
-            lottoNumbers[index].font = UIFont.systemFont(ofSize: 11)
-        }
-    }
-    
-    
-    
-    
     
     @IBAction func tapGestureClicked(_ sender: UITapGestureRecognizer) {
         lottoTextField.text = ""
