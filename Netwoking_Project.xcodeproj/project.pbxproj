@@ -16,6 +16,8 @@
 		260BAECB2AA5C3B10034B744 /* RealMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BAECA2AA5C3B10034B744 /* RealMModel.swift */; };
 		260BAECE2AA5C4700034B744 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 260BAECD2AA5C4700034B744 /* Realm */; };
 		260BAED02AA5C4700034B744 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 260BAECF2AA5C4700034B744 /* RealmSwift */; };
+		261BDA742AB2130B00B18529 /* BeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BDA732AB2130B00B18529 /* BeerViewModel.swift */; };
+		261BDA762AB2134500B18529 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BDA752AB2134500B18529 /* NetworkManager.swift */; };
 		26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA292A81FB0800CCDF90 /* AppDelegate.swift */; };
 		26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5EA2B2A81FB0800CCDF90 /* SceneDelegate.swift */; };
 		26E5EA312A81FB0800CCDF90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E5EA2F2A81FB0800CCDF90 /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		260BAEC42AA5BBE80034B744 /* MyFavoriteBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFavoriteBookTableViewCell.xib; sourceTree = "<group>"; };
 		260BAEC82AA5BC1C0034B744 /* ReuseIdentiferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentiferCell.swift; sourceTree = "<group>"; };
 		260BAECA2AA5C3B10034B744 /* RealMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealMModel.swift; sourceTree = "<group>"; };
+		261BDA732AB2130B00B18529 /* BeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModel.swift; sourceTree = "<group>"; };
+		261BDA752AB2134500B18529 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		26E5EA262A81FB0800CCDF90 /* Netwoking_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netwoking_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E5EA292A81FB0800CCDF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26E5EA2B2A81FB0800CCDF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,7 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				26E5EA532A82396400CCDF90 /* BeerViewController.swift */,
+				261BDA732AB2130B00B18529 /* BeerViewModel.swift */,
 				26E5EA452A8210AB00CCDF90 /* BeerDetailViewController.swift */,
+				261BDA752AB2134500B18529 /* NetworkManager.swift */,
 				26E5EA562A823ACC00CCDF90 /* TableViewCell */,
 				26E5EA552A823AC300CCDF90 /* CollectionViewCell */,
 			);
@@ -370,6 +376,7 @@
 				26E5EA6A2A8291C600CCDF90 /* ClickCellStatus.swift in Sources */,
 				26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */,
 				260BAEC22AA5BAE20034B744 /* MyFavoriteVC.swift in Sources */,
+				261BDA742AB2130B00B18529 /* BeerViewModel.swift in Sources */,
 				26EDB3592AB18F8300964C9C /* LottoAPIManager.swift in Sources */,
 				26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */,
 				26EDB3532AB1897B00964C9C /* Observable.swift in Sources */,
@@ -377,6 +384,7 @@
 				26EDB3572AB18D6E00964C9C /* Lotto.swift in Sources */,
 				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				260BAEC52AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift in Sources */,
+				261BDA762AB2134500B18529 /* NetworkManager.swift in Sources */,
 				26E939532AA741A700D2A79B /* DetailViewController.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
 				26EDB3552AB18A1000964C9C /* PachinkoViewModel.swift in Sources */,

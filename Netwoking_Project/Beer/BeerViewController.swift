@@ -13,6 +13,8 @@ class BeerViewController: UIViewController {
     
     var beerList: [Beer] = []
     
+    let beerViewModel = BeerViewModel()
+    
     @IBOutlet var collectionBg: UIView!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
@@ -22,11 +24,17 @@ class BeerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTableView()
-        callRequest()
         settingCollectionView()
         settingCollectionViewLayout()
         
         clickCellStatus = .tableSelected
+        beerViewModel.callRequst()
+        beerViewModel.list.bind { _ in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func settingTableView() {
@@ -63,30 +71,30 @@ class BeerViewController: UIViewController {
     }
     
     // 네트워크 통신
-    func callRequest() {
-        
-        let url = "https://api.punkapi.com/v2/beers"
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                
-                for item in json.arrayValue {
-                    
-                    let imageData = item["image_url"].stringValue
-                    let title = item["name"].stringValue
-                    let description = item["description"].stringValue
-                    let data = Beer(ImageUrl: imageData, title: title, description: description)
-                    self.beerList.append(data)
-                }
-                self.tableView.reloadData()
-                self.collectionView.reloadData()
-               // print("JSON: \(json)")
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+//    func callRequest() {
+//
+//        let url = "https://api.punkapi.com/v2/beers"
+//        AF.request(url, method: .get).validate().responseJSON { response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//
+//                for item in json.arrayValue {
+//
+//                    let imageData = item["image_url"].stringValue
+//                    let title = item["name"].stringValue
+//                    let description = item["description"].stringValue
+//                    let data = Beer(ImageUrl: imageData, title: title, description: description)
+//                    self.beerList.append(data)
+//                }
+//                self.tableView.reloadData()
+//                self.collectionView.reloadData()
+//               // print("JSON: \(json)")
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
   
 }
 
@@ -106,13 +114,13 @@ extension BeerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("tableView - numberOfRowsInSection")
-        return beerList.count
+        return beerViewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("tableView - cellForRowAt")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        let row = beerList[indexPath.row]
+        let row = beerViewModel.tableCellForRowAt(indexPath: indexPath)
         cell.configure(row: row)
         
         return cell
@@ -148,13 +156,13 @@ extension BeerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("collectionView - numberOfItemsInSection")
-        return beerList.count
+        return beerViewModel.numberOfRowsInSection()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("collectionView - cellForItemAt")
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        let item = beerList[indexPath.item]
+        let item = beerViewModel.collectionCellForRowAt(indexPath: indexPath)
          cell.configure(item: item)
 
         return cell
