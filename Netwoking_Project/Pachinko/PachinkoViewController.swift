@@ -15,6 +15,8 @@ class PachinkoViewController: UIViewController {
     
     let picker = UIPickerView()
     
+    let pachincoViewModel = PachinkoViewModel()
+    
     @IBOutlet var lottoNumbers: [UILabel]!
     
     @IBOutlet var gameStartBtn: UIButton!
@@ -34,8 +36,41 @@ class PachinkoViewController: UIViewController {
         super.viewDidLoad()
         settingInitial()
         settingTextField()
-      
+        settingViewModel()
         settingNumber()
+    }
+    
+    func settingViewModel() {
+        pachincoViewModel.firstNumber.bind { number in
+            self.lottoNumbers[0].text = "\(number)"
+        }
+        pachincoViewModel.secondNumber.bind { number in
+            self.lottoNumbers[1].text = number
+        }
+        
+        pachincoViewModel.thirdNumber.bind { number in
+            self.lottoNumbers[2].text = number
+        }
+        
+        pachincoViewModel.fourthNumber.bind { number in
+            self.lottoNumbers[3].text = number
+        }
+        
+        pachincoViewModel.fifthNumber.bind { number in
+            self.lottoNumbers[4].text = number
+        }
+        
+        pachincoViewModel.sixthNumber.bind { number in
+            self.lottoNumbers[5].text = number
+        }
+        
+        pachincoViewModel.bnusNumber.bind { number in
+            self.lottoNumbers[6].text = number
+        }
+        
+        pachincoViewModel.lottoMoney.bind { number in
+            self.lottoNumbers[7].text = number
+        }
     }
     
     func settingInitial() {
@@ -78,44 +113,7 @@ class PachinkoViewController: UIViewController {
         self.lottoTextField.placeholder = "확인하고 싶은 로또 회차를 입력해주세요"
     }
     
-    func callRequest() {
-        let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(selectedNumber)"
-        
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("JSON: \(json)")
-                
-                let number1 = json["drwtNo1"].intValue
-                let number2 = json["drwtNo2"].intValue
-                let number3 = json["drwtNo3"].intValue
-                let number4 = json["drwtNo4"].intValue
-                let number5 = json["drwtNo5"].intValue
-                let number6 = json["drwtNo6"].intValue
-                let bnusNumber = json["bnusNo"].intValue
-                
-                
-                self.createdLottoNumber.append(contentsOf: [number1,
-                                                  number2,
-                                                  number3,
-                                                  number4,
-                                                  number5,
-                                                  number6,
-                                                  bnusNumber])
-                
-                for i in 0..<self.createdLottoNumber.count {
-                    self.lottoNumbers[i].text = "\(self.createdLottoNumber[i])"
-                    self.lottoNumbers[i].textAlignment = .center
-                    self.lottoNumbers[i].font = UIFont.systemFont(ofSize: 17, weight: .medium)
-                }
-                // 적용 후 비워주기
-                self.createdLottoNumber = []
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+
 }
 
 extension PachinkoViewController: UIPickerViewDataSource {
@@ -141,7 +139,7 @@ extension PachinkoViewController: UIPickerViewDelegate {
         lottoTextField.text = "\(creatLottoCount[row])"
         selectedNumber = creatLottoCount[row]
         print("selectedNumber",selectedNumber)
-        callRequest()
+        pachincoViewModel.fetchLottoAPI(drwNo: selectedNumber)
         countLotto.text = "\(selectedNumber)회차 로또 번호"
     }
 }

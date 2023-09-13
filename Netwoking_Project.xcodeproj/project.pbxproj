@@ -48,6 +48,10 @@
 		26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */; };
 		26E939532AA741A700D2A79B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E939522AA741A700D2A79B /* DetailViewController.swift */; };
 		26E939552AA771D000D2A79B /* Ext+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E939542AA771D000D2A79B /* Ext+UITextView.swift */; };
+		26EDB3532AB1897B00964C9C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EDB3522AB1897B00964C9C /* Observable.swift */; };
+		26EDB3552AB18A1000964C9C /* PachinkoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EDB3542AB18A1000964C9C /* PachinkoViewModel.swift */; };
+		26EDB3572AB18D6E00964C9C /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EDB3562AB18D6E00964C9C /* Lotto.swift */; };
+		26EDB3592AB18F8300964C9C /* LottoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EDB3582AB18F8300964C9C /* LottoAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +93,10 @@
 		26E9394F2AA7259700D2A79B /* Ext+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+FileManager.swift"; sourceTree = "<group>"; };
 		26E939522AA741A700D2A79B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		26E939542AA771D000D2A79B /* Ext+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UITextView.swift"; sourceTree = "<group>"; };
+		26EDB3522AB1897B00964C9C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		26EDB3542AB18A1000964C9C /* PachinkoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PachinkoViewModel.swift; sourceTree = "<group>"; };
+		26EDB3562AB18D6E00964C9C /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
+		26EDB3582AB18F8300964C9C /* LottoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +179,10 @@
 			children = (
 				26E5EA3D2A81FF1B00CCDF90 /* PachinkoViewController.swift */,
 				26E5EA4C2A82216900CCDF90 /* GameViewController.swift */,
+				26EDB3522AB1897B00964C9C /* Observable.swift */,
+				26EDB3542AB18A1000964C9C /* PachinkoViewModel.swift */,
+				26EDB3562AB18D6E00964C9C /* Lotto.swift */,
+				26EDB3582AB18F8300964C9C /* LottoAPIManager.swift */,
 			);
 			path = Pachinko;
 			sourceTree = "<group>";
@@ -358,12 +370,16 @@
 				26E5EA6A2A8291C600CCDF90 /* ClickCellStatus.swift in Sources */,
 				26E5EA462A8210AB00CCDF90 /* BeerDetailViewController.swift in Sources */,
 				260BAEC22AA5BAE20034B744 /* MyFavoriteVC.swift in Sources */,
+				26EDB3592AB18F8300964C9C /* LottoAPIManager.swift in Sources */,
 				26E89A842A83EA1E00BC33E4 /* CollectionViewFooterView.swift in Sources */,
+				26EDB3532AB1897B00964C9C /* Observable.swift in Sources */,
 				26E939502AA7259700D2A79B /* Ext+FileManager.swift in Sources */,
+				26EDB3572AB18D6E00964C9C /* Lotto.swift in Sources */,
 				26E5EA5D2A823D4800CCDF90 /* TableViewCell.swift in Sources */,
 				260BAEC52AA5BBE80034B744 /* MyFavoriteBookTableViewCell.swift in Sources */,
 				26E939532AA741A700D2A79B /* DetailViewController.swift in Sources */,
 				26E5EA2A2A81FB0800CCDF90 /* AppDelegate.swift in Sources */,
+				26EDB3552AB18A1000964C9C /* PachinkoViewModel.swift in Sources */,
 				26E5EA752A82987900CCDF90 /* KakoBook.swift in Sources */,
 				26E5EA2C2A81FB0800CCDF90 /* SceneDelegate.swift in Sources */,
 				26E5EA4D2A82216900CCDF90 /* GameViewController.swift in Sources */,

@@ -93,10 +93,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6E-nC-YnR">
-                                <rect key="frame" x="153" y="419" width="87.333333333333314" height="34.333333333333314"/>
+                                <rect key="frame" x="153" y="489" width="87.333333333333314" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="게임 시작"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82G-bd-MjF">
+                                <rect key="frame" x="20" y="418" width="353" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,12 +110,15 @@
                         <constraints>
                             <constraint firstItem="pXG-Yn-GPr" firstAttribute="top" secondItem="ffl-LN-oGr" secondAttribute="bottom" constant="40" id="0Af-As-kbs"/>
                             <constraint firstItem="Y6E-nC-YnR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FYT-Nz-f9L"/>
-                            <constraint firstItem="Y6E-nC-YnR" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="GkT-Au-td3"/>
+                            <constraint firstItem="Y6E-nC-YnR" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="70" id="GkT-Au-td3"/>
                             <constraint firstItem="pXG-Yn-GPr" firstAttribute="leading" secondItem="ffl-LN-oGr" secondAttribute="leading" id="HpO-C6-ZwA"/>
                             <constraint firstItem="pXG-Yn-GPr" firstAttribute="trailing" secondItem="ffl-LN-oGr" secondAttribute="trailing" id="VGD-gf-Q68"/>
+                            <constraint firstItem="82G-bd-MjF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wlh-pN-VEb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ffl-LN-oGr" secondAttribute="trailing" constant="20" id="YDT-zA-9ni"/>
                             <constraint firstItem="6Gn-OD-ZGC" firstAttribute="top" secondItem="pXG-Yn-GPr" secondAttribute="bottom" constant="10" id="alk-tP-w0Z"/>
+                            <constraint firstItem="82G-bd-MjF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="e1N-F4-Zno"/>
                             <constraint firstItem="ffl-LN-oGr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jxN-0l-clY"/>
+                            <constraint firstItem="82G-bd-MjF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ko0-sl-fAj"/>
                             <constraint firstItem="6Gn-OD-ZGC" firstAttribute="trailing" secondItem="ffl-LN-oGr" secondAttribute="trailing" id="mPe-bd-ShG"/>
                             <constraint firstItem="6Gn-OD-ZGC" firstAttribute="leading" secondItem="ffl-LN-oGr" secondAttribute="leading" id="t9t-eR-Mpy"/>
                             <constraint firstItem="ffl-LN-oGr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vAJ-CX-g1X"/>
@@ -131,6 +140,7 @@
                         <outletCollection property="lottoNumbers" destination="c2f-iF-VCr" collectionClass="NSMutableArray" id="P5l-Kh-pJn"/>
                         <outletCollection property="lottoNumbers" destination="xdy-D3-LEM" collectionClass="NSMutableArray" id="EXM-5X-gZN"/>
                         <outletCollection property="lottoNumbers" destination="opO-bu-umu" collectionClass="NSMutableArray" id="6pE-DN-ine"/>
+                        <outletCollection property="lottoNumbers" destination="82G-bd-MjF" collectionClass="NSMutableArray" id="0UQ-Fr-ioh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
